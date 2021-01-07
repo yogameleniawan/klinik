@@ -27,6 +27,10 @@
 
 <body>
 
+  <?php
+  session_start();
+  ?>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark probootstrap-navbar-dark">
     <div class="container">
       <!-- <a class="navbar-brand" href="index.html">Health</a> -->
@@ -37,11 +41,14 @@
       <div class="collapse navbar-collapse" id="probootstrap-nav">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active"><a href="index.html" class="nav-link pl-0">Home</a></li>
-          <li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#logoutModal">Logout</a>
-          </li>
+          <?php if (!empty($_SESSION['id_user'])) { ?>
+            <li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            </li>
+          <?php } else { ?>
+            <li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>
+          <?php } ?>
         </ul>
-
 
         <div class="ml-auto">
           <form action="#" method="get" class="probootstrap-search-form mb-sm-0 mb-3">
@@ -218,22 +225,28 @@
         </div>
         <div class="col-md-6 p-md-5 p-3 probootstrap-aside-stretch-right">
           <h2 class="h1 text-white">Make an Appointment</h2>
-          <form action="#" class="probootstrap-form-appointment">
+          <form method="POST" action="prosesAppointment.php" class="probootstrap-form-appointment">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Name">
+              <p style="color:white">Nama : </p>
+              <input type="text" name="nama" class="form-control" placeholder="Your Name">
+              <p style="color:white;padding-top:15px">Tanggal Keluhan : </p>
             </div>
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="Your Email">
+
+              <input type="date" name="tanggal" class="form-control form-control-user" placeholder="Appointment Date">
             </div>
             <div class="form-group">
-              <span class="icon"><i class="icon-calendar"></i></span>
-              <input type="text" id="probootstrap-date" class="form-control" placeholder="Appointment Date">
+              <p style="color:white">Keluhan Anda : </p>
+              <textarea name="keluhan" class="form-control" id="" cols="30" rows="10" placeholder="Write your message"></textarea>
             </div>
             <div class="form-group">
-              <textarea name="" class="form-control" id="" cols="30" rows="10" placeholder="Write your message"></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Submit Form" class="btn btn-secondary">
+              <?php if (!empty($_SESSION['id_user'])) { ?>
+                <input type="submit" value="Submit Form" class="btn btn-secondary">
+                </li>
+              <?php } else { ?>
+                <a href="login.php" value="Submit Form" class="btn btn-secondary">Submit Form</a>
+              <?php } ?>
+
             </div>
           </form>
         </div>

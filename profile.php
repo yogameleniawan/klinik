@@ -267,23 +267,41 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
           </ul>
         </div>
         <div class="col-md-6 p-md-5 p-3 probootstrap-aside-stretch-right">
+
+          <?php
+
+          if (isset($_GET['nama']) and isset($_GET['tanggal']) and isset($_GET['keluhan'])) {
+            $nama = $_GET['nama'];
+            $tanggal = $_GET['tanggal'];
+            $keluhan = $_GET['keluhan'];
+          } else {
+            $nama = "";
+            $tanggal = "";
+            $keluhan = "";
+          }
+          ?>
           <h2 class="h1 text-white">Make an Appointment</h2>
-          <form action="#" class="probootstrap-form-appointment">
+          <form method="POST" action="prosesAppointment.php" class="probootstrap-form-appointment">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Name">
+              <p style="color:white">Nama : </p>
+              <input type="text" name="nama" class="form-control" placeholder="Your Name">
+              <p style="color:white;padding-top:15px">Tanggal Keluhan : </p>
             </div>
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="Your Email">
+              <input type="date" name="tanggal" class="form-control form-control-user" placeholder="Appointment Date">
             </div>
             <div class="form-group">
-              <span class="icon"><i class="icon-calendar"></i></span>
-              <input type="text" id="probootstrap-date" class="form-control" placeholder="Appointment Date">
+              <p style="color:white">Keluhan Anda : </p>
+              <textarea name="keluhan" class="form-control" id="" cols="30" rows="10" placeholder="Write your message"></textarea>
             </div>
             <div class="form-group">
-              <textarea name="" class="form-control" id="" cols="30" rows="10" placeholder="Write your message"></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Submit Form" class="btn btn-secondary">
+              <?php if (!empty($_SESSION['id_user'])) { ?>
+                <input type="submit" value="Submit Form" class="btn btn-secondary">
+                </li>
+              <?php } else { ?>
+                <a href="login.php" value="Submit Form" class="btn btn-secondary">Submit Form</a>
+              <?php } ?>
+
             </div>
           </form>
         </div>
