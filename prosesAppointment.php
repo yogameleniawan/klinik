@@ -231,18 +231,18 @@
                     $tanggal = $_POST['tanggal'];
                     $keluhan = $_POST['keluhan'];
 
-                    $no = "SELECT no_antrian FROM pelayanan ORDER BY id_pasien DESC LIMIT 1";
+                    $no = "SELECT no_antrian FROM pelayanan ORDER BY no_antrian DESC LIMIT 1";
                     $result = mysqli_query($connect, $no);
                     $row = mysqli_fetch_array($result);
 
-                    $id = $row['no_antrian'] + 2;
+                    $id = $row['no_antrian'] + 1;
                     $no_pelayanan = "L" . $id;
                     $id_pasien = $_SESSION['id_user'];
                     $sql = "INSERT INTO pelayanan (no_pelayanan,tgl_pelayanan,keluhan,id_pasien)
 VALUE('$no_pelayanan','$tanggal','$keluhan','$id_pasien')";
                     $res_s = mysqli_query($connect, $sql);
                     mysqli_close($connect);
-                    echo $tanggal;
+                    echo $id;
                     ?>
                     <h2 class="h1 text-white">Make an Appointment</h2>
                     <form method="POST" action="prosesAppointment.php" class="probootstrap-form-appointment">
