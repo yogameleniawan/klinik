@@ -48,8 +48,10 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
       <div class="collapse navbar-collapse" id="probootstrap-nav">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><a href="home.html" class="nav-link pl-0">Home</a></li>
+          <li class="nav-item"><a href="home.php" class="nav-link pl-0">Home</a></li>
           <li class="nav-item active"><a href="profile.php" class="nav-link">Profile</a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          </li>
         </ul>
         <div class="ml-auto">
           <form action="#" method="get" class="probootstrap-search-form mb-sm-0 mb-3">
@@ -121,7 +123,55 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     if (mysqli_num_rows($result) > 0) {
 
                   ?>
-                      <form class="user" method="POST" action="prosesRegister.php">
+
+                      <?php
+                      if (isset($_GET['error'])) {
+                        $error = $_GET['error'];
+                      } else {
+                        $error = "";
+                      }
+
+                      $pesan = "";
+                      if ($error == "nama_kosong") {
+                        $pesan = "Nama harus diisi";
+                      } else if ($error == "tanggal_kosong") {
+                        $pesan = "Tanggal Lahir harus diisi";
+                      } else if ($error == "password_kosong") {
+                        $pesan = "Password harus diisi";
+                      } else if ($error == "kelamin_kosong") {
+                        $pesan = "Jenis Kelamin harus diisi";
+                      } else if ($error == "alamat_kosong") {
+                        $pesan = "Alamat harus diisi";
+                      } else if ($error == "berat_kosong") {
+                        $pesan = "Berat Badan harus diisi";
+                      } else if ($error == "tinggi_kosong") {
+                        $pesan = "Tinggi Badan harus diisi";
+                      } else if ($error == "suhu_kosong") {
+                        $pesan = "Suhu Badan harus diisi";
+                      }
+
+                      if (isset($_GET['nama']) and isset($_GET['tanggal']) and isset($_GET['alamat']) and isset($_GET['kelamin']) and isset($_GET['berat']) and isset($_GET['tinggi']) and isset($_GET['suhu']) and isset($_GET['password'])) {
+                        $nama = $_GET['nama'];
+                        $tanggal = $_GET['tanggal'];
+                        $kelamin = $_GET['kelamin'];
+                        $alamat = $_GET['alamat'];
+                        $berat = $_GET['berat'];
+                        $tinggi = $_GET['tinggi'];
+                        $suhu = $_GET['suhu'];
+                        $password = $_GET['password'];
+                      } else {
+                        $nama = "";
+                        $tanggal = "";
+                        $kelamin = "";
+                        $alamat = "";
+                        $berat = "";
+                        $tinggi = "";
+                        $suhu = "";
+                        $password = "";
+                      }
+                      ?>
+                      <form class="user" method="POST" action="prosesEditProfile.php">
+                        <label style="color: #FF0000;font-size: 12px;"><?php echo $pesan; ?></label>
                         <?php
                         while ($row = mysqli_fetch_array($result)) {
                         ?>
@@ -169,7 +219,10 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                           </div>
                           <div class="form-group">
                             <p>Password :</p>
-                            <input type="password" class="form-control form-control-user" name="password" placeholder="*******">
+                            <input type="password" class="form-control form-control-user" name="" placeholder="*******">
+                            <input type="hidden" class="form-control form-control-user" name="password" value="<?php
+                                                                                                                echo  $row['password'];
+                                                                                                                ?>">
                           </div>
                           <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Edit">
                       </form>
@@ -407,6 +460,25 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
       </div>
     </div>
   </footer>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="logout.php">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- loader -->
   <div id="probootstrap-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
