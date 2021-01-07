@@ -150,9 +150,9 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
                                     ?>
                                             <form class="user" method="POST" action="prosesEditProfile.php">
-                                                <p style="color:red"><?php
-                                                                        echo "Update akun berhasil";
-                                                                        ?></p>
+                                                <script>
+                                                    alert('Update akun berhasil');
+                                                </script>
                                                 <?php
                                                 while ($row = mysqli_fetch_array($result)) {
                                                 ?>
