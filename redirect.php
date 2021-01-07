@@ -1,11 +1,9 @@
 <html>
 
 <body>
-   <script>
-      setTimeout(function() {
-         window.location.href = '/projek';
-      }, 3000);
-   </script>
+   <?php
+   header("Location:login.php");
+   ?>
    <p>Logout proccess wait a minutes.</p>
 </body>
 
