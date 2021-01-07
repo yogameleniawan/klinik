@@ -28,6 +28,8 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
   <link rel="stylesheet" href="css/bootstrap-datepicker.css">
   <link rel="stylesheet" href="css/style.css">
 
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -107,48 +109,81 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
             <div class="col-lg-10 col-md-10">
               <div class="media d-block mb-4 text-left probootstrap-media">
                 <div class="col-lg-6">
+                  <?php
+                  if ($link === false) {
+                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                  }
 
-                  <form class="user" method="POST" action="prosesRegister.php">
-                    <div class="form-group">
-                      <p>Nama Lengkap :</p>
-                      <input type="text" class="form-control form-control-user" name="nama" value="">
-                    </div>
-                    <div class="form-group">
-                      <p>Tanggal Lahir :</p>
-                      <input type="date" class="form-control-user" name="tanggal" style="border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  height: 55px;
-  border-radius: 0px;
-  background: none !important;
-  color: #8a9096 !important;
-  font-size: 16px;">
-                    </div>
-                    <div class="form-group">
-                      <p>Jenis Kelamin :</p>
-                      <input type="text" class="form-control form-control-user" name="kelamin" placeholder="Laki-laki / Perempuan">
-                    </div>
-                    <div class="form-group">
-                      <p>Alamat :</p>
-                      <input type="text" class="form-control form-control-user" name="alamat" placeholder="Alamat Lengkap">
-                    </div>
-                    <div class="form-group">
-                      <p>Berat Badan :</p>
-                      <input type="text" class="form-control form-control-user" name="berat" placeholder="Berat /kg">
-                    </div>
-                    <div class="form-group">
-                      <p>Tinggi Badan :</p>
-                      <input type="text" class="form-control form-control-user" name="tinggi" placeholder="Tinggi /cm">
-                    </div>
-                    <div class="form-group">
-                      <p>Suhu Badan :</p>
-                      <input type="text" class="form-control form-control-user" name="suhu" placeholder="Suhu Celcius">
-                    </div>
-                    <div class="form-group">
-                      <p>Password :</p>
-                      <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
-                    </div>
-                    <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Edit">
-                  </form>
+                  // Attempt select query execution
+                  $id_user = $_SESSION['id_user'];
+                  $sql = "SELECT * FROM pasien WHERE id_pasien = '$id_user'";
+                  if ($result = mysqli_query($link, $sql)) {
+                    if (mysqli_num_rows($result) > 0) {
+
+                  ?>
+                      <form class="user" method="POST" action="prosesRegister.php">
+                        <?php
+                        while ($row = mysqli_fetch_array($result)) {
+                        ?>
+                          <div class="form-group">
+                            <p>Nama Lengkap :</p>
+                            <input type="text" class="form-control form-control-user" name="nama" value="<?php
+                                                                                                          echo  $row['nama_pasien'];
+                                                                                                          ?>">
+                          </div>
+                          <div class="form-group">
+                            <p>Tanggal Lahir :</p>
+                            <input type="date" class="form-control form-control-user" name="tanggal" value="<?php
+                                                                                                            echo  $row['tgl_lahir'];
+                                                                                                            ?>">
+                          </div>
+                          <div class="form-group">
+                            <p>Jenis Kelamin :</p>
+                            <input type="text" class="form-control form-control-user" name="kelamin" value="<?php
+                                                                                                            echo  $row['jenis_kelamin_pasien'];
+                                                                                                            ?>">
+                          </div>
+                          <div class="form-group">
+                            <p>Alamat :</p>
+                            <input type="text" class="form-control form-control-user" name="alamat" value="<?php
+                                                                                                            echo  $row['alamat_pasien'];
+                                                                                                            ?>">
+                          </div>
+                          <div class="form-group">
+                            <p>Berat Badan :</p>
+                            <input type="text" class="form-control form-control-user" name="berat" value="<?php
+                                                                                                          echo  $row['berat_badan'];
+                                                                                                          ?>">
+                          </div>
+                          <div class="form-group">
+                            <p>Tinggi Badan :</p>
+                            <input type="text" class="form-control form-control-user" name="tinggi" value="<?php
+                                                                                                            echo  $row['tinggi_badan'];
+                                                                                                            ?>">
+                          </div>
+                          <div class="form-group">
+                            <p>Suhu Badan :</p>
+                            <input type="text" class="form-control form-control-user" name="suhu" value="<?php
+                                                                                                          echo  $row['suhu_badan'];
+                                                                                                          ?>">
+                          </div>
+                          <div class="form-group">
+                            <p>Password :</p>
+                            <input type="password" class="form-control form-control-user" name="password" placeholder="*******">
+                          </div>
+                          <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Edit">
+                      </form>
+                <?php
+                        }
+                        // Free result set
+                        mysqli_free_result($result);
+                      } else {
+                        echo "No records matching your query were found.";
+                      }
+                    } else {
+                      echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                    }
+                ?>
                 </div>
               </div>
             </div>

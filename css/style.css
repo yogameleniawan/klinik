@@ -796,16 +796,6 @@ h5,
   line-height: 1.2;
 }
 
-.form-control {
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  height: 55px;
-  border-radius: 0px;
-  background: none !important;
-  color: #8a9096 !important;
-  font-size: 16px;
-}
-
 .form-control:focus,
 .form-control:active {
   border-bottom: 1px solid white;
