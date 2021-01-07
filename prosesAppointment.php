@@ -242,7 +242,6 @@
 VALUE('$no_pelayanan','$tanggal','$keluhan','$id_pasien')";
                     $res_s = mysqli_query($connect, $sql);
                     mysqli_close($connect);
-                    echo $id;
                     ?>
                     <h2 class="h1 text-white">Make an Appointment</h2>
                     <form method="POST" action="prosesAppointment.php" class="probootstrap-form-appointment">
