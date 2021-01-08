@@ -95,8 +95,8 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Database Tables:</h6>
-                        <a class="collapse-item" href="dokter.php">Table Dokter</a>
-                        <a class="collapse-item active" href="pasien.php">Table Pasien</a>
+                        <a class="collapse-item active" href="dokter.php">Table Dokter</a>
+                        <a class="collapse-item " href="pasien.php">Table Pasien</a>
                         <a class="collapse-item" href="pelayanan.php">Table Pelayanan</a>
                         <a class="collapse-item" href="petugas.php">Table Petugas</a>
                         <a class="collapse-item" href="tindakan.php">Table Tindakan</a>
@@ -209,33 +209,29 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <h1 class="h3 mb-2 text-gray-800">Add Dokter</h1><br>
                     <!-- DataTales Example -->
                     <div class="col-lg-10 col-md-10">
-                            <div class="media d-block mb-4 text-left probootstrap-media">
-                                <div class="col-lg-6">
-                                            <form class="user" method="POST" action="">
-                                                    <div class="form-group">
-                                                        <p>ID :</p>
-                                                        <input type="text" class="form-control form-control-user" name="id">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Nama :</p>
-                                                        <input type="text" class="form-control form-control-user" name="nama">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Spesialis :</p>
-                                                        <input type="text" class="form-control form-control-user" name="spesialis">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Password :</p>
-                                                        <input type="password" class="form-control form-control-user" name="" placeholder="*******">
-                                                        <input type="hidden" class="form-control form-control-user" name="password">
-                                                    </div>
-                                                
-                                                    <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Add">
-                                            </form>
-
+                        <div class="media d-block mb-4 text-left probootstrap-media">
+                            <div class="col-lg-6">
+                                <form class="user" method="POST" action="prosesAddDokter.php">
+                                    <div class="form-group">
+                                        <p>Nama :</p>
+                                        <input type="text" class="form-control form-control-user" name="nama">
                                     </div>
-                                </div>
+                                    <div class="form-group">
+                                        <p>Spesialis :</p>
+                                        <input type="text" class="form-control form-control-user" name="spesialis">
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Password :</p>
+                                        <input type="password" class="form-control form-control-user" name="" placeholder="*******">
+                                        <input type="hidden" class="form-control form-control-user" name="password">
+                                    </div>
+
+                                    <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Add">
+                                </form>
+
+                            </div>
                         </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 

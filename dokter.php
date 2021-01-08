@@ -203,6 +203,30 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">TABLES</h1>
                     </div>
+                    <?php
+                    if (isset($_GET['pesan'])) {
+                        $pesan = $_GET['pesan'];
+                        if ($pesan == "input") {
+                    ?>
+                            <script>
+                                alert('Data berhasil diinput');
+                            </script>
+                        <?php
+                        } else if ($pesan == "update") {
+                        ?>
+                            <script>
+                                alert('Data berhasil diupdate');
+                            </script>
+                        <?php
+                        } else if ($pesan == "hapus") {
+                        ?>
+                            <script>
+                                alert('Data berhasil dihapus');
+                            </script>
+                    <?php
+                        }
+                    }
+                    ?>
 
                     <!-- Content Row -->
 
@@ -226,6 +250,13 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                     if (mysqli_num_rows($result) > 0) {
 
                                 ?>
+
+                                        <div class="col-lg-10 col-md-10" style="padding-top:20px">
+                                            <div class="col-lg-2">
+                                                <a class="btn btn-primary btn-user btn-block" href="addDokter.php">Add</a>
+                                            </div>
+                                        </div>
+
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -234,6 +265,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                                             <th>ID Dokter</th>
                                                             <th>Nama Dokter</th>
                                                             <th>Spesialis</th>
+                                                            <th>Opsi</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -255,6 +287,10 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                                                     echo $row['spesialis'];
 
                                                                     ?></td>
+                                                                <td>
+                                                                    <a class="btn btn-primary btn-user btn-block" href="editdokter.php?id=<?php echo $row['id_dokter']; ?>">Edit</a>
+                                                                    <a class="btn btn-danger btn-user btn-block" href="hapusdokter.php?id=<?php echo $row['id_dokter']; ?>">Hapus</a>
+                                                                </td>
 
                                                         </tr>
                                             <?php
@@ -313,7 +349,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="login.html">Logout</a>
+                            <a class="btn btn-primary" href="logout.php">Logout</a>
                         </div>
                     </div>
                 </div>

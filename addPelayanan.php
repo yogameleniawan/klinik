@@ -96,8 +96,8 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Database Tables:</h6>
                         <a class="collapse-item" href="dokter.php">Table Dokter</a>
-                        <a class="collapse-item active" href="pasien.php">Table Pasien</a>
-                        <a class="collapse-item" href="pelayanan.php">Table Pelayanan</a>
+                        <a class="collapse-item " href="pasien.php">Table Pasien</a>
+                        <a class="collapse-item active" href="pelayanan.php">Table Pelayanan</a>
                         <a class="collapse-item" href="petugas.php">Table Petugas</a>
                         <a class="collapse-item" href="tindakan.php">Table Tindakan</a>
                         <a class="collapse-item" href="obat.php">Table Obat</a>
@@ -206,66 +206,58 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Add Transaction</h1><br>
+                    <h1 class="h3 mb-2 text-gray-800">Add Pelayanan</h1><br>
                     <!-- DataTales Example -->
                     <div class="col-lg-10 col-md-10">
-                            <div class="media d-block mb-4 text-left probootstrap-media">
-                                <div class="col-lg-6">
-                                            <form class="user" method="POST" action="">
-                                                    <div class="form-group">
-                                                        <p>No :</p>
-                                                        <input type="text" class="form-control form-control-user" name="no">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Antrian :</p>
-                                                        <input type="text" class="form-control form-control-user" name="antrian">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Tanggal Pelayanan :</p>
-                                                        <input type="date" class="form-control form-control-user" name="tanggal">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Keluhan :</p>
-                                                        <input type="text" class="form-control form-control-user" name="keluhan">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Status Tindakan :</p>
-                                                        <input type="text" class="form-control form-control-user" name="tindakan">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Total Bayar :</p>
-                                                        <input type="text" class="form-control form-control-user" name="bayar">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Status Pembayaran :</p>
-                                                        <input type="text" class="form-control form-control-user" name="statusbayar">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Id Petugas :</p>
-                                                        <input type="text" class="form-control form-control-user" name="petugas">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Id Pasien :</p>
-                                                        <input type="text" class="form-control form-control-user" name="pasien">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Id Dokter :</p>
-                                                        <input type="text" class="form-control form-control-user" name="dokter">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Id Tindakan :</p>
-                                                        <input type="text" class="form-control form-control-user" name="tindakan">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Id Obat :</p>
-                                                        <input type="text" class="form-control form-control-user" name="obat">
-                                                    </div>
-                                                    <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Add">
-                                            </form>
-
+                        <div class="media d-block mb-4 text-left probootstrap-media">
+                            <div class="col-lg-6">
+                                <form class="user" method="POST" action="prosesAddPelayanan.php">
+                                    <div class="form-group">
+                                        <p>Tanggal Pelayanan :</p>
+                                        <input type="date" class="form-control form-control-user" name="tanggal">
                                     </div>
-                                </div>
+                                    <div class="form-group">
+                                        <p>Keluhan :</p>
+                                        <input type="text" class="form-control form-control-user" name="keluhan">
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Status Tindakan :</p>
+                                        <input type="text" class="form-control form-control-user" name="statustindakan">
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Total Bayar :</p>
+                                        <input type="text" class="form-control form-control-user" name="bayar">
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Status Pembayaran :</p>
+                                        <input type="text" class="form-control form-control-user" name="statusbayar">
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Id Petugas :</p>
+                                        <input type="text" class="form-control form-control-user" name="petugas">
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Id Pasien :</p>
+                                        <input type="text" class="form-control form-control-user" name="pasien">
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Id Dokter :</p>
+                                        <input type="text" class="form-control form-control-user" name="dokter">
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Id Tindakan :</p>
+                                        <input type="text" class="form-control form-control-user" name="tindakan">
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Id Obat :</p>
+                                        <input type="text" class="form-control form-control-user" name="obat">
+                                    </div>
+                                    <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Add">
+                                </form>
+
+                            </div>
                         </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 

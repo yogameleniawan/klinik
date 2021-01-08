@@ -17,11 +17,15 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
     <title>Klinik Kesehatan</title>
 
     <!-- Custom fonts for this template-->
+    <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-    <!-- Custom styles for this template-->
+
+    <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -45,7 +49,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -74,13 +78,15 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                         <a class="collapse-item" href="petugasdesc.php">Petugas</a>
                         <a class="collapse-item" href="tindakandesc.php">Tindakan</a>
                         <a class="collapse-item" href="obatdesc.php">Obat</a>
-
                     </div>
                 </div>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Database
+            </div>
             <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-table"></i>
@@ -89,9 +95,9 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Database Tables:</h6>
-                        <a class="collapse-item" href="dokter.php">Table Dokter</a>
-                        <a class="collapse-item" href="pasien.php">Table Pasien</a>
-                        <a class="collapse-item active" href="pelayanan.php">Table Pelayanan</a>
+                        <a class="collapse-item active" href="dokter.php">Table Dokter</a>
+                        <a class="collapse-item " href="pasien.php">Table Pasien</a>
+                        <a class="collapse-item" href="pelayanan.php">Table Pelayanan</a>
                         <a class="collapse-item" href="petugas.php">Table Petugas</a>
                         <a class="collapse-item" href="tindakan.php">Table Tindakan</a>
                         <a class="collapse-item" href="obat.php">Table Obat</a>
@@ -200,183 +206,148 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">TABLES</h1>
-                    </div>
+                    <h1 class="h3 mb-2 text-gray-800">Edit Dokter</h1><br>
+                    <!-- DataTales Example -->
+                    <div class="col-lg-10 col-md-10">
+                        <div class="media d-block mb-4 text-left probootstrap-media">
+                            <div class="col-lg-6">
 
-                    <!-- Content Row -->
+                                <?php
 
-                    <div class="row">
+                                $connect = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
-                        <!-- Area Chart -->
-                        <div class="col-xl-12 col-lg-8">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">TABLE PELAYANAN</h6>
-                                </div>
+                                $nama = $_POST['nama'];
+                                $spesialis = $_POST['spesialis'];
+                                $password = $_POST['password'];
+                                $no = "SELECT id_dokter FROM dokter ORDER BY id_dokter DESC LIMIT 1";
+                                $result = mysqli_query($connect, $no);
+                                $row = mysqli_fetch_array($result);
+
+                                $id_dokter = $_GET['id'];
+
+                                $sql = "UPDATE dokter SET id_dokter = '$id_dokter',password='$password',nama_dokter = '$nama',spesialis = '$spesialis' WHERE id_dokter = '$id_dokter'";
+                                $res_s = mysqli_query($connect, $sql);
+
+                                mysqli_close($connect);
+                                ?>
+
                                 <?php
                                 if ($link === false) {
                                     die("ERROR: Could not connect. " . mysqli_connect_error());
                                 }
 
                                 // Attempt select query execution
-                                $sql = "SELECT*FROM pelayanan";
+                                $id_user = $_GET['id'];
+                                $sql = "SELECT * FROM dokter WHERE id_dokter = '$id_user'";
                                 if ($result = mysqli_query($link, $sql)) {
                                     if (mysqli_num_rows($result) > 0) {
 
                                 ?>
-                                        <div class="col-lg-10 col-md-10" style="padding-top:20px">
-                                            <div class="col-lg-2">
-                                                <a class="btn btn-primary btn-user btn-block" href="addPelayanan.php">Add</a>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>No</th>
-                                                            <th>Antrian</th>
-                                                            <th>Tgl Pelayanan</th>
-                                                            <th>Keluhan</th>
-                                                            <th>Status Tindakan</th>
-                                                            <th>Total Bayar</th>
-                                                            <th>Status Pembayaran</th>
-                                                            <th>Opsi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <?php
-                                                            while ($row = mysqli_fetch_array($result)) {
-                                                            ?>
-                                                                <td><?php
 
-                                                                    echo  $row['no_pelayanan'];
-                                                                    ?>
-                                                                </td>
-                                                                <td><?php
-                                                                    echo $row['no_antrian'];
-
-                                                                    ?>
-                                                                </td>
-                                                                <td><?php
-                                                                    echo $row['tgl_pelayanan'];
-
-                                                                    ?>
-                                                                </td>
-                                                                <td><?php
-                                                                    echo $row['keluhan'];
-
-                                                                    ?>
-                                                                </td>
-                                                                <td><?php
-                                                                    echo $row['status_tindakan'];
-
-                                                                    ?>
-                                                                </td>
-                                                                <td><?php
-                                                                    echo $row['total_pembayaran'];
-
-                                                                    ?>
-                                                                </td>
-                                                                <td><?php
-                                                                    echo $row['status_pembayaran'];
-
-                                                                    ?>
-                                                                </td>
-
-                                                                <td>
-                                                                    <a class="btn btn-primary btn-user btn-block" href="editpelayanan.php?id=<?php echo $row['no_pelayanan']; ?>">Edit</a>
-                                                                    <a class="btn btn-danger btn-user btn-block" href="hapuspelayanan.php?id=<?php echo $row['no_pelayanan']; ?>">Hapus</a>
-                                                                </td>
-
-                                                        </tr>
+                                        <script>
+                                            alert("Edit Data Success");
+                                        </script>
+                                        <form class="user" method="POST" action="prosesEditDokter.php?id=<?php echo $id_user; ?>">
                                             <?php
-                                                            }
-                                                            // Free result set
-                                                            mysqli_free_result($result);
-                                                        } else {
-                                                            echo "No records matching your query were found.";
-                                                        }
-                                                    } else {
-                                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                                                    }
+                                            while ($row = mysqli_fetch_array($result)) {
                                             ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                                <div class="form-group">
+                                                    <p>Nama :</p>
+                                                    <input type="text" class="form-control form-control-user" name="nama" value="<?php
+                                                                                                                                    echo  $row['nama_dokter'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Spesialis :</p>
+                                                    <input type="text" class="form-control form-control-user" name="spesialis" value="<?php
+                                                                                                                                        echo  $row['spesialis'];
+                                                                                                                                        ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Password :</p>
+                                                    <input type="password" class="form-control form-control-user" name="" placeholder="*******">
+                                                    <input type="hidden" class="form-control form-control-user" name="password" value="<?php
+                                                                                                                                        echo  $row['password'];
+                                                                                                                                        ?>">
+                                                </div>
+
+                                                <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Edit">
+                                        </form>
+                            <?php
+                                            }
+                                            // Free result set
+                                            mysqli_free_result($result);
+                                        } else {
+                                            echo "No records matching your query were found.";
+                                        }
+                                    } else {
+                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                    }
+                            ?>
                             </div>
-                        </div>
-
-
-                    </div>
-                    <!-- End of Main Content -->
-
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; Your Website 2021</span>
-                            </div>
-                        </div>
-                    </footer>
-                    <!-- End of Footer -->
-
-                </div>
-                <!-- End of Content Wrapper -->
-
-            </div>
-            <!-- End of Page Wrapper -->
-
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
-
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="login.php">Logout</a>
                         </div>
                     </div>
                 </div>
+                <!-- /.container-fluid -->
+
             </div>
+            <!-- End of Main Content -->
 
-            <!-- Bootstrap core JavaScript-->
-            <script src="vendor/jquery/jquery.min.js"></script>
-            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
-            <!-- Core plugin JavaScript-->
-            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        </div>
+        <!-- End of Content Wrapper -->
 
-            <!-- Custom scripts for all pages-->
-            <script src="js/sb-admin-2.min.js"></script>
+    </div>
+    <!-- End of Page Wrapper -->
 
-            <!-- Page level plugins -->
-            <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-            <!-- Page level custom scripts -->
-            <script src="js/demo/chart-area-demo.js"></script>
-            <script src="js/demo/chart-pie-demo.js"></script>
-            <!-- Page level plugins -->
-            <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-            <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.php">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <!-- Page level custom scripts -->
-            <script src="js/demo/datatables-demo.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

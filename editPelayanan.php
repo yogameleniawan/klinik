@@ -96,8 +96,8 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Database Tables:</h6>
                         <a class="collapse-item" href="dokter.php">Table Dokter</a>
-                        <a class="collapse-item active" href="pasien.php">Table Pasien</a>
-                        <a class="collapse-item" href="pelayanan.php">Table Pelayanan</a>
+                        <a class="collapse-item " href="pasien.php">Table Pasien</a>
+                        <a class="collapse-item active" href="pelayanan.php">Table Pelayanan</a>
                         <a class="collapse-item" href="petugas.php">Table Petugas</a>
                         <a class="collapse-item" href="tindakan.php">Table Tindakan</a>
                         <a class="collapse-item" href="obat.php">Table Obat</a>
@@ -209,63 +209,140 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <h1 class="h3 mb-2 text-gray-800">Edit Pelayanan</h1><br>
                     <!-- DataTales Example -->
                     <div class="col-lg-10 col-md-10">
-                            <div class="media d-block mb-4 text-left probootstrap-media">
-                                <div class="col-lg-6">
-                                
-                                <form class="user" method="POST" action="">
-                                                    <div class="form-group">
-                                                        <p>No :</p>
-                                                        <input type="text" class="form-control form-control-user" name="no">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Antrian :</p>
-                                                        <input type="text" class="form-control form-control-user" name="antrian">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Tanggal Pelayanan :</p>
-                                                        <input type="date" class="form-control form-control-user" name="tanggal">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Keluhan :</p>
-                                                        <input type="text" class="form-control form-control-user" name="keluhan">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Status Tindakan :</p>
-                                                        <input type="text" class="form-control form-control-user" name="tindakan">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Total Bayar :</p>
-                                                        <input type="text" class="form-control form-control-user" name="bayar">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Status Pembayaran :</p>
-                                                        <input type="text" class="form-control form-control-user" name="statusbayar">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Id Petugas :</p>
-                                                        <input type="text" class="form-control form-control-user" name="petugas">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Id Pasien :</p>
-                                                        <input type="text" class="form-control form-control-user" name="pasien">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Id Dokter :</p>
-                                                        <input type="text" class="form-control form-control-user" name="dokter">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Id Tindakan :</p>
-                                                        <input type="text" class="form-control form-control-user" name="tindakan">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Id Obat :</p>
-                                                        <input type="text" class="form-control form-control-user" name="obat">
-                                                    </div>
-                                                    <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Add">
-                                            </form>
-                                    </div>
-                                </div>
+                        <div class="media d-block mb-4 text-left probootstrap-media">
+                            <div class="col-lg-6">
+                                <?php
+                                if ($link === false) {
+                                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                                }
+
+                                // Attempt select query execution
+                                $id = $_GET['id'];
+                                $sql = "SELECT * FROM pelayanan WHERE no_pelayanan = '$id'";
+                                if ($result = mysqli_query($link, $sql)) {
+                                    if (mysqli_num_rows($result) > 0) {
+                                        if (isset($_GET['error'])) {
+                                            $error = $_GET['error'];
+                                        } else {
+                                            $error = "";
+                                        }
+
+                                        if (isset($_GET['no']) and isset($_GET['antrian']) and isset($_GET['tanggal']) and isset($_GET['keluhan']) and isset($_GET['statustindakan']) and isset($_GET['bayar']) and isset($_GET['statusbayar']) and isset($_GET['password']) and isset($_GET['petugas']) and isset($_GET['pasien']) and isset($_GET['dokter']) and isset($_GET['tindakan']) and isset($_GET['obat'])) {
+                                            $tanggal = $_GET['tanggal'];
+                                            $keluhan = $_GET['keluhan'];
+                                            $statustindakan = $_GET['statustindakan'];
+                                            $bayar = $_GET['bayar'];
+                                            $statusbayar = $_GET['statusbayar'];
+                                            $petugas = $_GET['petugas'];
+                                            $pasien = $_GET['pasien'];
+                                            $dokter = $_GET['dokter'];
+                                            $tindakan = $_GET['tindakan'];
+                                            $obat = $_GET['obat'];
+                                        } else {
+                                            $tanggal = "";
+                                            $keluhan = "";
+                                            $statustindakan = "";
+                                            $bayar = "";
+                                            $statusbayar = "";
+                                            $petugas = "";
+                                            $pasien = "";
+                                            $dokter = "";
+                                            $tindakan = "";
+                                            $obat = "";
+                                        }
+                                ?>
+                                        <form class="user" method="POST" action="prosesEditPelayanan.php?id=<?php echo $id; ?>">
+                                            <?php
+                                            while ($row = mysqli_fetch_array($result)) {
+                                            ?>
+                                                <div class="form-group">
+                                                    <p>No :</p>
+                                                    <input type="text" class="form-control form-control-user" name="no" value="<?php
+                                                                                                                                echo  $row['no_pelayanan'];
+                                                                                                                                ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Antrian :</p>
+                                                    <input type="text" class="form-control form-control-user" name="antrian" value="<?php
+                                                                                                                                    echo  $row['no_antrian'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Tanggal Pelayanan :</p>
+                                                    <input type="date" class="form-control form-control-user" name="tanggal" value="<?php
+                                                                                                                                    echo  $row['tgl_pelayanan'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Keluhan :</p>
+                                                    <input type="text" class="form-control form-control-user" name="keluhan" value="<?php
+                                                                                                                                    echo  $row['keluhan'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Status Tindakan :</p>
+                                                    <input type="text" class="form-control form-control-user" name="statustindakan" value="<?php
+                                                                                                                                            echo  $row['status_tindakan'];
+                                                                                                                                            ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Total Bayar :</p>
+                                                    <input type="text" class="form-control form-control-user" name="bayar" value="<?php
+                                                                                                                                    echo  $row['total_pembayaran'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Status Pembayaran :</p>
+                                                    <input type="text" class="form-control form-control-user" name="statusbayar" value="<?php
+                                                                                                                                        echo  $row['status_pembayaran'];
+                                                                                                                                        ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Id Petugas :</p>
+                                                    <input type="text" class="form-control form-control-user" name="petugas" value="<?php
+                                                                                                                                    echo  $row['id_petugas'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Id Pasien :</p>
+                                                    <input type="text" class="form-control form-control-user" name="pasien" value="<?php
+                                                                                                                                    echo  $row['id_pasien'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Id Dokter :</p>
+                                                    <input type="text" class="form-control form-control-user" name="dokter" value="<?php
+                                                                                                                                    echo  $row['id_dokter'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Id Tindakan :</p>
+                                                    <input type="text" class="form-control form-control-user" name="tindakan" value="<?php
+                                                                                                                                        echo  $row['id_tindakan'];
+                                                                                                                                        ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Id Obat :</p>
+                                                    <input type="text" class="form-control form-control-user" name="obat" value="<?php
+                                                                                                                                    echo  $row['id_obat'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Edit">
+                                        </form>
+                            <?php
+                                            }
+                                            // Free result set
+                                            mysqli_free_result($result);
+                                        } else {
+                                            echo "No records matching your query were found.";
+                                        }
+                                    } else {
+                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                    }
+                            ?>
+                            </div>
                         </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 

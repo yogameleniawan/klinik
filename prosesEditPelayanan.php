@@ -96,8 +96,8 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Database Tables:</h6>
                         <a class="collapse-item" href="dokter.php">Table Dokter</a>
-                        <a class="collapse-item active" href="pasien.php">Table Pasien</a>
-                        <a class="collapse-item" href="pelayanan.php">Table Pelayanan</a>
+                        <a class="collapse-item " href="pasien.php">Table Pasien</a>
+                        <a class="collapse-item active" href="pelayanan.php">Table Pelayanan</a>
                         <a class="collapse-item" href="petugas.php">Table Petugas</a>
                         <a class="collapse-item" href="tindakan.php">Table Tindakan</a>
                         <a class="collapse-item" href="obat.php">Table Obat</a>
@@ -200,145 +200,152 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     </ul>
 
                 </nav>
-
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables Data</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Edit Pelayanan</h1><br>
                     <!-- DataTales Example -->
+                    <div class="col-lg-10 col-md-10">
+                        <div class="media d-block mb-4 text-left probootstrap-media">
+                            <div class="col-lg-6">
 
-                    <?php
-                    if (isset($_GET['pesan'])) {
-                        $pesan = $_GET['pesan'];
-                        if ($pesan == "input") {
-                    ?>
-                            <script>
-                                alert('Data berhasil diinput');
-                            </script>
-                        <?php
-                        } else if ($pesan == "update") {
-                        ?>
-                            <script>
-                                alert('Data berhasil diupdate');
-                            </script>
-                        <?php
-                        } else if ($pesan == "hapus") {
-                        ?>
-                            <script>
-                                alert('Data berhasil dihapus');
-                            </script>
-                    <?php
-                        }
-                    }
-                    ?>
+                                <?php
 
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary" style="padding-bottom:20px">Column Pasien</h6>
-                        </div><br>
-                        <?php
-                        if ($link === false) {
-                            die("ERROR: Could not connect. " . mysqli_connect_error());
-                        }
+                                $connect = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
-                        // Attempt select query execution
-                        $sql = "SELECT*FROM pasien";
-                        if ($result = mysqli_query($link, $sql)) {
-                            if (mysqli_num_rows($result) > 0) {
+                                $tanggal = $_POST['tanggal'];
+                                $keluhan = $_POST['keluhan'];
+                                $statustindakan = $_POST['statustindakan'];
+                                $bayar = $_POST['bayar'];
+                                $statusbayar = $_POST['statusbayar'];
+                                $petugas = $_POST['petugas'];
+                                $pasien = $_POST['pasien'];
+                                $dokter = $_POST['dokter'];
+                                $tindakan = $_POST['tindakan'];
+                                $obat = $_POST['obat'];
+                                $no = "SELECT no_antrian FROM pelayanan ORDER BY no_antrian DESC LIMIT 1";
+                                $result = mysqli_query($connect, $no);
+                                $row = mysqli_fetch_array($result);
 
-                        ?>
-                                <div class="col-lg-10 col-md-10">
-                                    <div class="col-lg-2">
-                                        <a class="btn btn-primary btn-user btn-block" href="addPasien.php">Add</a>
-                                    </div>
-                                </div>
+                                $id = $row['no_antrian'] + 1;
+                                $no_pelayanan = $_GET['id'];
+                                $no_antrian = $row['no_antrian'];
 
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID Pasien</th>
-                                                    <th>Nama Pasien</th>
-                                                    <th>Tgl Lahir</th>
-                                                    <th>Jenis Kelamin</th>
-                                                    <th>Alamat</th>
-                                                    <th>Berat badan</th>
-                                                    <th>Tinggi Badan</th>
-                                                    <th>Suhu Badan</th>
-                                                    <th>Opsi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <?php
-                                                    while ($row = mysqli_fetch_array($result)) {
-                                                    ?>
-                                                        <td><?php
+                                $sql = "UPDATE pelayanan SET no_pelayanan = '$no_pelayanan',no_antrian = '$no_antrian',tgl_pelayanan = '$tanggal',keluhan='$keluhan',status_tindakan='$statustindakan',total_pembayaran='$bayar',status_pembayaran='$statusbayar',id_petugas='$petugas',id_pasien='$pasien',id_dokter='$dokter',id_tindakan='$tindakan',id_obat='$obat' WHERE no_pelayanan = '$no_pelayanan'";
+                                $res_s = mysqli_query($connect, $sql);
 
-                                                            echo  $row['id_pasien'];
-                                                            ?>
-                                                        </td>
-                                                        <td><?php
-                                                            echo $row['nama_pasien'];
+                                mysqli_close($connect);
+                                ?>
+                                <?php
+                                if ($link === false) {
+                                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                                }
 
-                                                            ?>
-                                                        </td>
-                                                        <td><?php
-                                                            echo $row['tgl_lahir'];
+                                // Attempt select query execution
+                                $id = $_GET['id'];
+                                $sql = "SELECT * FROM pelayanan WHERE no_pelayanan = '$id'";
+                                if ($result = mysqli_query($link, $sql)) {
+                                    if (mysqli_num_rows($result) > 0) {
 
-                                                            ?>
-                                                        </td>
-                                                        <td><?php
-                                                            echo $row['jenis_kelamin_pasien'];
-
-                                                            ?>
-                                                        </td>
-                                                        <td><?php
-                                                            echo $row['alamat_pasien'];
-
-                                                            ?>
-                                                        </td>
-                                                        <td><?php
-                                                            echo $row['berat_badan'];
-
-                                                            ?>
-                                                        </td>
-                                                        <td><?php
-                                                            echo $row['tinggi_badan'];
-
-                                                            ?>
-                                                        </td>
-                                                        <td><?php
-                                                            echo $row['suhu_badan'];
-
-                                                            ?>
-                                                        </td>
-                                                        <td>
-                                                            <a class="btn btn-primary btn-user btn-block" href="editpasien.php?id=<?php echo $row['id_pasien']; ?>">Edit</a>
-                                                            <a class="btn btn-danger btn-user btn-block" href="hapuspasien.php?id=<?php echo $row['id_pasien']; ?>">Hapus</a>
-                                                        </td>
-                                                </tr>
-                                    <?php
-                                                    }
-                                                    // Free result set
-                                                    mysqli_free_result($result);
-                                                } else {
-                                                    echo "No records matching your query were found.";
-                                                }
-                                            } else {
-                                                echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                ?>
+                                        <form class="user" method="POST" action="prosesEditPelayanan.php?id=<?php echo $id; ?>">
+                                            <?php
+                                            while ($row = mysqli_fetch_array($result)) {
+                                            ?>
+                                                <script>
+                                                    alert('Edit Data Pelayanan Berhasil');
+                                                </script>
+                                                <div class="form-group">
+                                                    <p>No :</p>
+                                                    <input type="text" class="form-control form-control-user" name="no" value="<?php
+                                                                                                                                echo  $row['no_pelayanan'];
+                                                                                                                                ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Antrian :</p>
+                                                    <input type="text" class="form-control form-control-user" name="antrian" value="<?php
+                                                                                                                                    echo  $row['no_antrian'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Tanggal Pelayanan :</p>
+                                                    <input type="date" class="form-control form-control-user" name="tanggal" value="<?php
+                                                                                                                                    echo  $row['tgl_pelayanan'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Keluhan :</p>
+                                                    <input type="text" class="form-control form-control-user" name="keluhan" value="<?php
+                                                                                                                                    echo  $row['keluhan'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Status Tindakan :</p>
+                                                    <input type="text" class="form-control form-control-user" name="statustindakan" value="<?php
+                                                                                                                                            echo  $row['status_tindakan'];
+                                                                                                                                            ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Total Bayar :</p>
+                                                    <input type="text" class="form-control form-control-user" name="bayar" value="<?php
+                                                                                                                                    echo  $row['total_pembayaran'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Status Pembayaran :</p>
+                                                    <input type="text" class="form-control form-control-user" name="statusbayar" value="<?php
+                                                                                                                                        echo  $row['status_pembayaran'];
+                                                                                                                                        ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Id Petugas :</p>
+                                                    <input type="text" class="form-control form-control-user" name="petugas" value="<?php
+                                                                                                                                    echo  $row['id_petugas'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Id Pasien :</p>
+                                                    <input type="text" class="form-control form-control-user" name="pasien" value="<?php
+                                                                                                                                    echo  $row['id_pasien'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Id Dokter :</p>
+                                                    <input type="text" class="form-control form-control-user" name="dokter" value="<?php
+                                                                                                                                    echo  $row['id_dokter'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Id Tindakan :</p>
+                                                    <input type="text" class="form-control form-control-user" name="tindakan" value="<?php
+                                                                                                                                        echo  $row['id_tindakan'];
+                                                                                                                                        ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Id Obat :</p>
+                                                    <input type="text" class="form-control form-control-user" name="obat" value="<?php
+                                                                                                                                    echo  $row['id_obat'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Edit">
+                                        </form>
+                            <?php
                                             }
-                                    ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                            // Free result set
+                                            mysqli_free_result($result);
+                                        } else {
+                                            echo "No records matching your query were found.";
+                                        }
+                                    } else {
+                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                    }
+                            ?>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
 

@@ -248,6 +248,9 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                     if (mysqli_num_rows($result) > 0) {
 
                                 ?>
+                                        <script>
+                                            alert("Edit Data Success");
+                                        </script>
                                         <form class="user" method="POST" action="prosesEditPasien.php?id=<?php echo $id_user; ?>">
                                             <?php
                                             while ($row = mysqli_fetch_array($result)) {

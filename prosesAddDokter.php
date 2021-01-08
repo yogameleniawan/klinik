@@ -89,9 +89,9 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Database Tables:</h6>
-                        <a class="collapse-item" href="dokter.php">Table Dokter</a>
+                        <a class="collapse-item active" href="dokter.php">Table Dokter</a>
                         <a class="collapse-item" href="pasien.php">Table Pasien</a>
-                        <a class="collapse-item active" href="pelayanan.php">Table Pelayanan</a>
+                        <a class="collapse-item" href="pelayanan.php">Table Pelayanan</a>
                         <a class="collapse-item" href="petugas.php">Table Petugas</a>
                         <a class="collapse-item" href="tindakan.php">Table Tindakan</a>
                         <a class="collapse-item" href="obat.php">Table Obat</a>
@@ -203,6 +203,22 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">TABLES</h1>
                     </div>
+                    <script>
+                        alert('Add dokter berhasil');
+                    </script>
+
+                    <?php
+                    if (isset($_GET['pesan'])) {
+                        $pesan = $_GET['pesan'];
+                        if ($pesan == "input") {
+                            echo "Data berhasil di input.";
+                        } else if ($pesan == "update") {
+                            echo "Data berhasil di update.";
+                        } else if ($pesan == "hapus") {
+                            echo "Data berhasil di hapus.";
+                        }
+                    }
+                    ?>
 
                     <!-- Content Row -->
 
@@ -211,38 +227,69 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                         <!-- Area Chart -->
                         <div class="col-xl-12 col-lg-8">
                             <div class="card shadow mb-4">
+
+                                <!-- INSERT PROSES -->
+                                <?php
+                                $connect = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
+
+                                $nama = $_POST['nama'];
+                                $spesialis = $_POST['spesialis'];
+                                $password = $_POST['password'];
+                                $no = "SELECT COUNT(id_dokter) as count FROM dokter";
+                                $result = mysqli_query($connect, $no);
+                                $row = mysqli_fetch_array($result);
+
+                                $id = $row['count'] + 1;
+                                $id_dokter = "DO" . $id;
+
+                                $sql = "INSERT INTO dokter (id_dokter,password,nama_dokter,spesialis)
+  VALUE('$id_dokter','$password','$nama','$spesialis')";
+                                $res_s = mysqli_query($connect, $sql);
+
+                                mysqli_close($connect);
+                                ?>
+                                <!-- INSERT PROSES -->
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">TABLE PELAYANAN</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">TABLE DOKTER</h6>
                                 </div>
                                 <?php
                                 if ($link === false) {
                                     die("ERROR: Could not connect. " . mysqli_connect_error());
                                 }
 
+                                if (isset($_GET['pesan'])) {
+                                    $pesan = $_GET['pesan'];
+                                    if ($pesan == "input") {
+                                        echo "Data telah diinput";
+                                    } else if ($pesan == "update") {
+                                        echo "Data berhasil di update";
+                                    } else if ($pesan == "hapus") {
+                                        echo "Data berhasil di hapus";
+                                    }
+                                }
+
                                 // Attempt select query execution
-                                $sql = "SELECT*FROM pelayanan";
+                                $sql = "SELECT*FROM dokter";
                                 if ($result = mysqli_query($link, $sql)) {
                                     if (mysqli_num_rows($result) > 0) {
 
                                 ?>
+
                                         <div class="col-lg-10 col-md-10" style="padding-top:20px">
                                             <div class="col-lg-2">
-                                                <a class="btn btn-primary btn-user btn-block" href="addPelayanan.php">Add</a>
+                                                <a class="btn btn-primary btn-user btn-block" href="addDokter.php">Add</a>
                                             </div>
                                         </div>
+
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                                     <thead>
                                                         <tr>
-                                                            <th>No</th>
-                                                            <th>Antrian</th>
-                                                            <th>Tgl Pelayanan</th>
-                                                            <th>Keluhan</th>
-                                                            <th>Status Tindakan</th>
-                                                            <th>Total Bayar</th>
-                                                            <th>Status Pembayaran</th>
+                                                            <th>ID Dokter</th>
+                                                            <th>Nama Dokter</th>
+                                                            <th>Spesialis</th>
                                                             <th>Opsi</th>
                                                         </tr>
                                                     </thead>
@@ -253,43 +300,21 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                                             ?>
                                                                 <td><?php
 
-                                                                    echo  $row['no_pelayanan'];
+                                                                    echo  $row['id_dokter'];
                                                                     ?>
                                                                 </td>
                                                                 <td><?php
-                                                                    echo $row['no_antrian'];
-
-                                                                    ?>
-                                                                </td>
-                                                                <td><?php
-                                                                    echo $row['tgl_pelayanan'];
+                                                                    echo $row['nama_dokter'];
 
                                                                     ?>
                                                                 </td>
                                                                 <td><?php
-                                                                    echo $row['keluhan'];
+                                                                    echo $row['spesialis'];
 
-                                                                    ?>
-                                                                </td>
-                                                                <td><?php
-                                                                    echo $row['status_tindakan'];
-
-                                                                    ?>
-                                                                </td>
-                                                                <td><?php
-                                                                    echo $row['total_pembayaran'];
-
-                                                                    ?>
-                                                                </td>
-                                                                <td><?php
-                                                                    echo $row['status_pembayaran'];
-
-                                                                    ?>
-                                                                </td>
-
+                                                                    ?></td>
                                                                 <td>
-                                                                    <a class="btn btn-primary btn-user btn-block" href="editpelayanan.php?id=<?php echo $row['no_pelayanan']; ?>">Edit</a>
-                                                                    <a class="btn btn-danger btn-user btn-block" href="hapuspelayanan.php?id=<?php echo $row['no_pelayanan']; ?>">Hapus</a>
+                                                                    <a class="btn btn-primary btn-user btn-block" href="editdokter.php?id=<?php echo $row['id_dokter']; ?>">Edit</a>
+                                                                    <a class="btn btn-danger btn-user btn-block" href="hapusdokter.php?id=<?php echo $row['id_dokter']; ?>">Hapus</a>
                                                                 </td>
 
                                                         </tr>
@@ -349,7 +374,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="login.php">Logout</a>
+                            <a class="btn btn-primary" href="logout.php">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -377,7 +402,6 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
             <!-- Page level custom scripts -->
             <script src="js/demo/datatables-demo.js"></script>
-
 </body>
 
 </html>

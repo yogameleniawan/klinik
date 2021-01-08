@@ -212,12 +212,52 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                         <div class="col-xl-12 col-lg-8">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
+                                <!-- INSERT PROSES -->
+                                <?php
+                                $connect = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
+
+                                $tanggal = $_POST['tanggal'];
+                                $keluhan = $_POST['keluhan'];
+                                $statustindakan = $_POST['statustindakan'];
+                                $bayar = $_POST['bayar'];
+                                $statusbayar = $_POST['statusbayar'];
+                                $petugas = $_POST['petugas'];
+                                $pasien = $_POST['pasien'];
+                                $dokter = $_POST['dokter'];
+                                $tindakan = $_POST['tindakan'];
+                                $obat = $_POST['obat'];
+                                $no = "SELECT no_antrian FROM pelayanan ORDER BY no_antrian DESC LIMIT 1";
+                                $result = mysqli_query($connect, $no);
+                                $row = mysqli_fetch_array($result);
+
+                                $id = $row['no_antrian'] + 1;
+                                $no_pelayanan = "L" . $id;
+
+                                $sql = "INSERT INTO pelayanan (no_pelayanan,tgl_pelayanan,keluhan,status_tindakan,total_pembayaran,status_pembayaran,id_petugas,id_pasien,id_dokter,id_tindakan,id_obat)
+  VALUE('$no_pelayanan','$tanggal','$keluhan','$statustindakan','$bayar','$statusbayar','$petugas','$pasien','$dokter','$tindakan','$obat')";
+                                $res_s = mysqli_query($connect, $sql);
+
+                                mysqli_close($connect);
+                                ?>
+                                <!-- INSERT PROSES -->
+                                <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">TABLE PELAYANAN</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">TABLE Pelayanan</h6>
                                 </div>
                                 <?php
                                 if ($link === false) {
                                     die("ERROR: Could not connect. " . mysqli_connect_error());
+                                }
+
+                                if (isset($_GET['pesan'])) {
+                                    $pesan = $_GET['pesan'];
+                                    if ($pesan == "input") {
+                                        echo "Data telah diinput";
+                                    } else if ($pesan == "update") {
+                                        echo "Data berhasil di update";
+                                    } else if ($pesan == "hapus") {
+                                        echo "Data berhasil di hapus";
+                                    }
                                 }
 
                                 // Attempt select query execution
