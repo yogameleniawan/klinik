@@ -18,9 +18,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -63,8 +61,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Components</span>
                 </a>
@@ -80,13 +77,11 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
             <!-- Divider -->
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Database Tables:</h6>
                         <a class="collapse-item" href="dokter.php">Table Dokter</a>
@@ -125,11 +120,9 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -143,18 +136,14 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -171,27 +160,17 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -221,391 +200,386 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                         <div class="col-xl-12 col-lg-8">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">1. Nama pasien yang mendapat no antrian 26</h6>
                                 </div>
-                                    <?php
-                        if ($link === false) {
-                            die("ERROR: Could not connect. " . mysqli_connect_error());
-                        }
+                                <?php
+                                if ($link === false) {
+                                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                                }
 
-                        // Attempt select query execution
-                        $sql = "SELECT pl.no_antrian as no_antrian , ps.nama_pasien as nama FROM pelayanan as pl JOIN pasien as ps ON pl.id_pasien = ps.id_pasien WHERE pl.no_antrian = 26 ";
-                        if ($result = mysqli_query($link, $sql)) {
-                            if (mysqli_num_rows($result) > 0) {
+                                // Attempt select query execution
+                                $sql = "SELECT pl.no_antrian as no_antrian , ps.nama_pasien as nama FROM pelayanan as pl JOIN pasien as ps ON pl.id_pasien = ps.id_pasien WHERE pl.no_antrian = 26 ";
+                                if ($result = mysqli_query($link, $sql)) {
+                                    if (mysqli_num_rows($result) > 0) {
 
-                        ?>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>No Antrian</th>
-                                                    <th>Nama Pasien</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <?php
-                                                    while ($row = mysqli_fetch_array($result)) {
-                                                    ?>
-                                                        <td><?php
-
-                                                            echo  $row['no_antrian'];
+                                ?>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No Antrian</th>
+                                                            <th>Nama Pasien</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <?php
+                                                            while ($row = mysqli_fetch_array($result)) {
                                                             ?>
-                                                        </td>
-                                                        <td><?php
-                                                            echo $row['nama'];
+                                                                <td><?php
 
-                                                            ?></td>
-                                                </tr>
-                                    <?php
+                                                                    echo  $row['no_antrian'];
+                                                                    ?>
+                                                                </td>
+                                                                <td><?php
+                                                                    echo $row['nama'];
+
+                                                                    ?></td>
+                                                        </tr>
+                                            <?php
+                                                            }
+                                                            // Free result set
+                                                            mysqli_free_result($result);
+                                                        } else {
+                                                            echo "No records matching your query were found.";
+                                                        }
+                                                    } else {
+                                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                                                     }
-                                                    // Free result set
-                                                    mysqli_free_result($result);
-                                                } else {
-                                                    echo "No records matching your query were found.";
-                                                }
-                                            } else {
-                                                echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                                            }
-                                    ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                    </div></div>
+                                            ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
 
-                    <div class="col-xl-12 col-lg-8">
+                        <div class="col-xl-12 col-lg-8">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">2. Nama dokter yang memeriksa pasien dengan berat badan 40 kg dan dilayani oleh karyawan yang bernama Roni</h6>
                                 </div>
-                                    <?php
-                        if ($link === false) {
-                            die("ERROR: Could not connect. " . mysqli_connect_error());
-                        }
+                                <?php
+                                if ($link === false) {
+                                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                                }
 
-                        // Attempt select query execution
-                        $sql = "SELECT d.nama_dokter as nama_dokter , ps.berat_badan as berat, pg.nama_petugas as nama_petugas FROM pelayanan as pl 
+                                // Attempt select query execution
+                                $sql = "SELECT d.nama_dokter as nama_dokter , ps.berat_badan as berat, pg.nama_petugas as nama_petugas FROM pelayanan as pl 
                         JOIN pasien as ps ON pl.id_pasien = ps.id_pasien 
                         JOIN dokter as d ON pl.id_dokter = d.id_dokter
                         JOIN petugas as pg ON pl.id_petugas = pg.id_petugas  WHERE pg.nama_petugas LIKE '%Roni%' AND ps.berat_badan = 40";
-                        if ($result = mysqli_query($link, $sql)) {
-                            if (mysqli_num_rows($result) > 0) {
+                                if ($result = mysqli_query($link, $sql)) {
+                                    if (mysqli_num_rows($result) > 0) {
 
-                        ?>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Nama Dokter</th>
-                                                    <th>Berat Badan Pasien</th>
-                                                    <th>Nama Karyawan</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <?php
-                                                    while ($row = mysqli_fetch_array($result)) {
-                                                    ?>
-                                                        <td><?php
-
-                                                            echo  $row['nama_dokter'];
+                                ?>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nama Dokter</th>
+                                                            <th>Berat Badan Pasien</th>
+                                                            <th>Nama Karyawan</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <?php
+                                                            while ($row = mysqli_fetch_array($result)) {
                                                             ?>
-                                                        </td>
-                                                        <td><?php
-                                                            echo $row['berat'];
+                                                                <td><?php
 
-                                                            ?></td>
-                                                        <td><?php
-                                                            echo $row['nama_petugas'];
+                                                                    echo  $row['nama_dokter'];
+                                                                    ?>
+                                                                </td>
+                                                                <td><?php
+                                                                    echo $row['berat'];
 
-                                                            ?></td>
-                                                </tr>
+                                                                    ?></td>
+                                                                <td><?php
+                                                                    echo $row['nama_petugas'];
+
+                                                                    ?></td>
+                                                        </tr>
                                             <?php
-                                                }
-                                                    // Free result set
-                                                    mysqli_free_result($result);
-                                                } else {
-                                                    echo "No records matching your query were found.";
-                                                }
-                                            } else {
-                                                echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                                            }
+                                                            }
+                                                            // Free result set
+                                                            mysqli_free_result($result);
+                                                        } else {
+                                                            echo "No records matching your query were found.";
+                                                        }
+                                                    } else {
+                                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                                    }
                                             ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                             </div>
                         </div>
 
                         <div class="col-xl-12 col-lg-8">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">3. Nama karyawan yang memberikan obat Paracetamol pada pasien</h6>
                                 </div>
-                                    <?php
-                                    if ($link === false) {
-                                        die("ERROR: Could not connect. " . mysqli_connect_error());
-                                    }
+                                <?php
+                                if ($link === false) {
+                                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                                }
 
-                                    // Attempt select query execution
-                                    $sql = "SELECT pg.nama_petugas as nama_petugas, ps.nama_pasien as nama_pasien, o.nama_obat as nama_obat FROM pelayanan as pl 
+                                // Attempt select query execution
+                                $sql = "SELECT pg.nama_petugas as nama_petugas, ps.nama_pasien as nama_pasien, o.nama_obat as nama_obat FROM pelayanan as pl 
                         JOIN pasien as ps ON pl.id_pasien = ps.id_pasien 
                         JOIN obat as o ON pl.id_obat = o.id_obat
                         JOIN petugas as pg ON pl.id_petugas = pg.id_petugas  WHERE o.nama_obat LIKE '%Paracetamol%'";
-                                    if ($result = mysqli_query($link, $sql)) {
-                                        if (mysqli_num_rows($result) > 0) {
+                                if ($result = mysqli_query($link, $sql)) {
+                                    if (mysqli_num_rows($result) > 0) {
 
-                                    ?>
-                                            <div class="card-body">
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered" id="" width="100%" cellspacing="0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Nama Karyawan</th>
-                                                                <th>Nama Pasien</th>
-                                                                <th>Nama Obat</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <?php
-                                                                while ($row = mysqli_fetch_array($result)) {
-                                                                ?>
-                                                                    <td><?php
+                                ?>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nama Karyawan</th>
+                                                            <th>Nama Pasien</th>
+                                                            <th>Nama Obat</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <?php
+                                                            while ($row = mysqli_fetch_array($result)) {
+                                                            ?>
+                                                                <td><?php
 
-                                                                        echo  $row['nama_petugas'];
-                                                                        ?>
-                                                                    </td>
-                                                                    <td><?php
-                                                                        echo $row['nama_pasien'];
+                                                                    echo  $row['nama_petugas'];
+                                                                    ?>
+                                                                </td>
+                                                                <td><?php
+                                                                    echo $row['nama_pasien'];
 
-                                                                        ?></td>
-                                                                    <td><?php
-                                                                        echo $row['nama_obat'];
+                                                                    ?></td>
+                                                                <td><?php
+                                                                    echo $row['nama_obat'];
 
-                                                                        ?></td>
-                                                            </tr>
-                                                <?php
-                                                                }
-                                                                // Free result set
-                                                                mysqli_free_result($result);
-                                                            } else {
-                                                                echo "No records matching your query were found.";
+                                                                    ?></td>
+                                                        </tr>
+                                            <?php
                                                             }
+                                                            // Free result set
+                                                            mysqli_free_result($result);
                                                         } else {
-                                                            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                                            echo "No records matching your query were found.";
                                                         }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                                    } else {
+                                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                                    }
+                                            ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                             </div>
                         </div>
 
                         <div class="col-xl-12 col-lg-8">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">4. Nama obat yang diterima oleh pasien yang bernama Rizky</h6>
                                 </div>
-                                    <?php
-                                                if ($link === false) {
-                                                    die("ERROR: Could not connect. " . mysqli_connect_error());
-                                                }
+                                <?php
+                                if ($link === false) {
+                                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                                }
 
-                                                // Attempt select query execution
-                                                $sql = "SELECT ps.nama_pasien as nama_pasien, o.nama_obat as nama_obat FROM pelayanan as pl 
+                                // Attempt select query execution
+                                $sql = "SELECT ps.nama_pasien as nama_pasien, o.nama_obat as nama_obat FROM pelayanan as pl 
                         JOIN pasien as ps ON pl.id_pasien = ps.id_pasien 
                         JOIN obat as o ON pl.id_obat = o.id_obat
                         WHERE ps.nama_pasien LIKE '%Rizky%'";
-                                                if ($result = mysqli_query($link, $sql)) {
-                                                    if (mysqli_num_rows($result) > 0) {
+                                if ($result = mysqli_query($link, $sql)) {
+                                    if (mysqli_num_rows($result) > 0) {
 
-                                                ?>
-                                                        <div class="card-body">
-                                                            <div class="table-responsive">
-                                                                <table class="table table-bordered" id="" width="100%" cellspacing="0">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Nama Pasien</th>
-                                                                            <th>Nama Obat</th>
+                                ?>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nama Pasien</th>
+                                                            <th>Nama Obat</th>
 
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <?php
-                                                                            while ($row = mysqli_fetch_array($result)) {
-                                                                            ?>
-                                                                                <td><?php
-                                                                                    echo $row['nama_pasien'];
-
-                                                                                    ?></td>
-                                                                                <td><?php
-                                                                                    echo $row['nama_obat'];
-
-                                                                                    ?></td>
-                                                                        </tr>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
                                                             <?php
-                                                                            }
-                                                                            // Free result set
-                                                                            mysqli_free_result($result);
-                                                                        } else {
-                                                                            echo "No records matching your query were found.";
-                                                                        }
-                                                                    } else {
-                                                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                                                                    }
+                                                            while ($row = mysqli_fetch_array($result)) {
                                                             ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                                                <td><?php
+                                                                    echo $row['nama_pasien'];
+
+                                                                    ?></td>
+                                                                <td><?php
+                                                                    echo $row['nama_obat'];
+
+                                                                    ?></td>
+                                                        </tr>
+                                            <?php
+                                                            }
+                                                            // Free result set
+                                                            mysqli_free_result($result);
+                                                        } else {
+                                                            echo "No records matching your query were found.";
+                                                        }
+                                                    } else {
+                                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                                    }
+                                            ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                             </div>
                         </div>
 
                         <div class="col-xl-12 col-lg-8">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">5. No antrian pasien yang lahir tahun 1960 dan bersuhu badan 36℃</h6>
                                 </div>
-                                    <?php
-                                                            if ($link === false) {
-                                                                die("ERROR: Could not connect. " . mysqli_connect_error());
-                                                            }
+                                <?php
+                                if ($link === false) {
+                                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                                }
 
-                                                            // Attempt select query execution
-                                                            $sql = "SELECT pl.no_antrian as no_antrian, ps.nama_pasien as nama_pasien, ps.tgl_lahir as tgl_lahir, ps.suhu_badan as suhu_badan FROM pelayanan as pl 
+                                // Attempt select query execution
+                                $sql = "SELECT pl.no_antrian as no_antrian, ps.nama_pasien as nama_pasien, ps.tgl_lahir as tgl_lahir, ps.suhu_badan as suhu_badan FROM pelayanan as pl 
                         JOIN pasien as ps ON pl.id_pasien = ps.id_pasien 
                         WHERE YEAR(ps.tgl_lahir) = 1960 AND ps.suhu_badan = 36 ";
-                                                            if ($result = mysqli_query($link, $sql)) {
-                                                                if (mysqli_num_rows($result) > 0) {
+                                if ($result = mysqli_query($link, $sql)) {
+                                    if (mysqli_num_rows($result) > 0) {
 
+                                ?>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No Antrian</th>
+                                                            <th>Nama Pasien</th>
+                                                            <th>Tanggal Lahir Pasien</th>
+                                                            <th>Suhu Badan Pasien</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <?php
+                                                            while ($row = mysqli_fetch_array($result)) {
                                                             ?>
-                                                                    <div class="card-body">
-                                                                        <div class="table-responsive">
-                                                                            <table class="table table-bordered" id="" width="100%" cellspacing="0">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th>No Antrian</th>
-                                                                                        <th>Nama Pasien</th>
-                                                                                        <th>Tanggal Lahir Pasien</th>
-                                                                                        <th>Suhu Badan Pasien</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <?php
-                                                                                        while ($row = mysqli_fetch_array($result)) {
-                                                                                        ?>
-                                                                                            <td><?php
-                                                                                                echo $row['no_antrian'];
+                                                                <td><?php
+                                                                    echo $row['no_antrian'];
 
-                                                                                                ?></td>
-                                                                                            <td><?php
-                                                                                                echo $row['nama_pasien'];
+                                                                    ?></td>
+                                                                <td><?php
+                                                                    echo $row['nama_pasien'];
 
-                                                                                                ?></td>
-                                                                                            <td><?php
-                                                                                                echo $row['tgl_lahir'];
+                                                                    ?></td>
+                                                                <td><?php
+                                                                    echo $row['tgl_lahir'];
 
-                                                                                                ?></td>
-                                                                                            <td><?php
-                                                                                                echo $row['suhu_badan'];
+                                                                    ?></td>
+                                                                <td><?php
+                                                                    echo $row['suhu_badan'];
 
-                                                                                                ?></td>
-                                                                                    </tr>
-                                                                        <?php
-                                                                                        }
-                                                                                        // Free result set
-                                                                                        mysqli_free_result($result);
-                                                                                    } else {
-                                                                                        echo "No records matching your query were found.";
-                                                                                    }
-                                                                                } else {
-                                                                                    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                                                                                }
-                                                                        ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                                                    ?></td>
+                                                        </tr>
+                                            <?php
+                                                            }
+                                                            // Free result set
+                                                            mysqli_free_result($result);
+                                                        } else {
+                                                            echo "No records matching your query were found.";
+                                                        }
+                                                    } else {
+                                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                                    }
+                                            ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                             </div>
                         </div>
-            </div>
-            <!-- End of Main Content -->
+                    </div>
+                    <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                    <!-- Footer -->
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>Copyright &copy; Your Website 2021</span>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- End of Footer -->
+
+                </div>
+                <!-- End of Content Wrapper -->
+
+            </div>
+            <!-- End of Page Wrapper -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="login.php">Logout</a>
+                        </div>
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.php">Logout</a>
-                </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+            <!-- Page level plugins -->
+            <script src="vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+            <!-- Page level custom scripts -->
+            <script src="js/demo/chart-area-demo.js"></script>
+            <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

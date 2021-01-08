@@ -190,14 +190,6 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" href="login.php"></i>
@@ -342,234 +334,235 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                 </div>
 
                             </div> <?php } ?>
-                        <!-- End of Main Content -->
-
-                        <!-- Footer -->
-                        <footer class="sticky-footer bg-white">
-                            <div class="container my-auto">
-                                <div class="copyright text-center my-auto">
-                                    <span>Copyright &copy; Your Website 2021</span>
-                                </div>
-                            </div>
-                        </footer>
-                        <!-- End of Footer -->
-
                     </div>
-                    <!-- End of Content Wrapper -->
+                    <!-- End of Main Content -->
+
+                    <!-- Footer -->
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>Copyright &copy; Your Website 2021</span>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- End of Footer -->
 
                 </div>
-                <!-- End of Page Wrapper -->
+                <!-- End of Content Wrapper -->
 
-                <!-- Scroll to Top Button-->
-                <a class="scroll-to-top rounded" href="#page-top">
-                    <i class="fas fa-angle-up"></i>
-                </a>
+            </div>
+            <!-- End of Page Wrapper -->
 
-                <!-- Logout Modal-->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                <a class="btn btn-primary" href="logout.php">Logout</a>
-                            </div>
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="logout.php">Logout</a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Bootstrap core JavaScript-->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                <!-- Core plugin JavaScript-->
-                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-                <!-- Custom scripts for all pages-->
-                <script src="js/sb-admin-2.min.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="js/sb-admin-2.min.js"></script>
 
-                <!-- Page level plugins -->
-                <script src="vendor/chart.js/Chart.min.js"></script>
+            <!-- Page level plugins -->
+            <script src="vendor/chart.js/Chart.min.js"></script>
 
-                <!-- Page level custom scripts -->
-                <script src="js/demo/chart-pie-demo.js"></script>
+            <!-- Page level custom scripts -->
+            <script src="js/demo/chart-pie-demo.js"></script>
 
-                <?php
-                $connect = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
-                $jan = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '01'";
-                $janResult = mysqli_query($connect, $jan);
-                $janRow = mysqli_fetch_array($janResult);
+            <?php
+            $connect = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
+            $jan = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '01'";
+            $janResult = mysqli_query($connect, $jan);
+            $janRow = mysqli_fetch_array($janResult);
 
-                $feb = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '02'";
-                $febResult = mysqli_query($connect, $feb);
-                $febRow = mysqli_fetch_array($febResult);
+            $feb = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '02'";
+            $febResult = mysqli_query($connect, $feb);
+            $febRow = mysqli_fetch_array($febResult);
 
-                $mar = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '03'";
-                $marResult = mysqli_query($connect, $mar);
-                $marRow = mysqli_fetch_array($marResult);
+            $mar = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '03'";
+            $marResult = mysqli_query($connect, $mar);
+            $marRow = mysqli_fetch_array($marResult);
 
-                $apr = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '04'";
-                $aprResult = mysqli_query($connect, $apr);
-                $aprRow = mysqli_fetch_array($aprResult);
+            $apr = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '04'";
+            $aprResult = mysqli_query($connect, $apr);
+            $aprRow = mysqli_fetch_array($aprResult);
 
-                $mei = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '05'";
-                $meiResult = mysqli_query($connect, $mei);
-                $meiRow = mysqli_fetch_array($meiResult);
+            $mei = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '05'";
+            $meiResult = mysqli_query($connect, $mei);
+            $meiRow = mysqli_fetch_array($meiResult);
 
-                $jun = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '06'";
-                $junResult = mysqli_query($connect, $jun);
-                $junRow = mysqli_fetch_array($junResult);
+            $jun = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '06'";
+            $junResult = mysqli_query($connect, $jun);
+            $junRow = mysqli_fetch_array($junResult);
 
-                $jul = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '07'";
-                $julResult = mysqli_query($connect, $jul);
-                $julRow = mysqli_fetch_array($julResult);
+            $jul = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '07'";
+            $julResult = mysqli_query($connect, $jul);
+            $julRow = mysqli_fetch_array($julResult);
 
-                $aug = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '08'";
-                $augResult = mysqli_query($connect, $aug);
-                $augRow = mysqli_fetch_array($augResult);
+            $aug = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '08'";
+            $augResult = mysqli_query($connect, $aug);
+            $augRow = mysqli_fetch_array($augResult);
 
-                $sep = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '09'";
-                $sepResult = mysqli_query($connect, $sep);
-                $sepRow = mysqli_fetch_array($sepResult);
+            $sep = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '09'";
+            $sepResult = mysqli_query($connect, $sep);
+            $sepRow = mysqli_fetch_array($sepResult);
 
-                $oct = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '10'";
-                $octResult = mysqli_query($connect, $oct);
-                $octRow = mysqli_fetch_array($octResult);
+            $oct = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '10'";
+            $octResult = mysqli_query($connect, $oct);
+            $octRow = mysqli_fetch_array($octResult);
 
-                $nov = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '11'";
-                $novResult = mysqli_query($connect, $nov);
-                $novRow = mysqli_fetch_array($novResult);
+            $nov = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '11'";
+            $novResult = mysqli_query($connect, $nov);
+            $novRow = mysqli_fetch_array($novResult);
 
-                $dec = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '12'";
-                $decResult = mysqli_query($connect, $dec);
-                $decRow = mysqli_fetch_array($decResult);
-                ?>
+            $dec = "SELECT COUNT(no_pelayanan) as total FROM pelayanan WHERE MONTH(tgl_pelayanan) = '12'";
+            $decResult = mysqli_query($connect, $dec);
+            $decRow = mysqli_fetch_array($decResult);
+            ?>
 
-                <script type="text/javascript">
-                    // Set new default font family and font color to mimic Bootstrap's default styling
-                    Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-                    Chart.defaults.global.defaultFontColor = '#858796';
+            <script type="text/javascript">
+                // Set new default font family and font color to mimic Bootstrap's default styling
+                Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+                Chart.defaults.global.defaultFontColor = '#858796';
 
-                    function number_format(number, decimals, dec_point, thousands_sep) {
-                        // *     example: number_format(1234.56, 2, ',', ' ');
-                        // *     return: '1 234,56'
-                        number = (number + '').replace(',', '').replace(' ', '');
-                        var n = !isFinite(+number) ? 0 : +number,
-                            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-                            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-                            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-                            s = '',
-                            toFixedFix = function(n, prec) {
-                                var k = Math.pow(10, prec);
-                                return '' + Math.round(n * k) / k;
-                            };
-                        // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-                        s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-                        if (s[0].length > 3) {
-                            s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-                        }
-                        if ((s[1] || '').length < prec) {
-                            s[1] = s[1] || '';
-                            s[1] += new Array(prec - s[1].length + 1).join('0');
-                        }
-                        return s.join(dec);
+                function number_format(number, decimals, dec_point, thousands_sep) {
+                    // *     example: number_format(1234.56, 2, ',', ' ');
+                    // *     return: '1 234,56'
+                    number = (number + '').replace(',', '').replace(' ', '');
+                    var n = !isFinite(+number) ? 0 : +number,
+                        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+                        sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+                        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+                        s = '',
+                        toFixedFix = function(n, prec) {
+                            var k = Math.pow(10, prec);
+                            return '' + Math.round(n * k) / k;
+                        };
+                    // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+                    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+                    if (s[0].length > 3) {
+                        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
                     }
+                    if ((s[1] || '').length < prec) {
+                        s[1] = s[1] || '';
+                        s[1] += new Array(prec - s[1].length + 1).join('0');
+                    }
+                    return s.join(dec);
+                }
 
-                    // Area Chart Example
-                    var ctx = document.getElementById("myAreaChart");
-                    var myLineChart = new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                            datasets: [{
-                                lineTension: 0.3,
-                                backgroundColor: "rgba(78, 115, 223, 0.05)",
-                                borderColor: "rgba(78, 115, 223, 1)",
-                                pointRadius: 3,
-                                pointBackgroundColor: "rgba(78, 115, 223, 1)",
-                                pointBorderColor: "rgba(78, 115, 223, 1)",
-                                pointHoverRadius: 3,
-                                pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-                                pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-                                pointHitRadius: 10,
-                                pointBorderWidth: 2,
-                                data: [<?php echo $janRow['total']; ?>, <?php echo $febRow['total']; ?>, <?php echo $marRow['total']; ?>, <?php echo $aprRow['total']; ?>, <?php echo $meiRow['total']; ?>, <?php echo $junRow['total']; ?>, <?php echo $julRow['total']; ?>, <?php echo $augRow['total']; ?>, <?php echo $sepRow['total']; ?>, <?php echo $octRow['total']; ?>, <?php echo $novRow['total']; ?>, <?php echo $decRow['total']; ?>],
+                // Area Chart Example
+                var ctx = document.getElementById("myAreaChart");
+                var myLineChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                        datasets: [{
+                            lineTension: 0.3,
+                            backgroundColor: "rgba(78, 115, 223, 0.05)",
+                            borderColor: "rgba(78, 115, 223, 1)",
+                            pointRadius: 3,
+                            pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                            pointBorderColor: "rgba(78, 115, 223, 1)",
+                            pointHoverRadius: 3,
+                            pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                            pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                            pointHitRadius: 10,
+                            pointBorderWidth: 2,
+                            data: [<?php echo $janRow['total']; ?>, <?php echo $febRow['total']; ?>, <?php echo $marRow['total']; ?>, <?php echo $aprRow['total']; ?>, <?php echo $meiRow['total']; ?>, <?php echo $junRow['total']; ?>, <?php echo $julRow['total']; ?>, <?php echo $augRow['total']; ?>, <?php echo $sepRow['total']; ?>, <?php echo $octRow['total']; ?>, <?php echo $novRow['total']; ?>, <?php echo $decRow['total']; ?>],
+                        }],
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        layout: {
+                            padding: {
+                                left: 10,
+                                right: 25,
+                                top: 25,
+                                bottom: 0
+                            }
+                        },
+                        scales: {
+                            xAxes: [{
+                                time: {
+                                    unit: 'date'
+                                },
+                                gridLines: {
+                                    display: false,
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    maxTicksLimit: 7
+                                }
+                            }],
+                            yAxes: [{
+                                ticks: {
+                                    maxTicksLimit: 5,
+                                    padding: 10,
+                                    // Include a dollar sign in the ticks
+                                    callback: function(value, index, values) {
+                                        return number_format(value) + " pasien";
+                                    }
+                                },
+                                gridLines: {
+                                    color: "rgb(234, 236, 244)",
+                                    zeroLineColor: "rgb(234, 236, 244)",
+                                    drawBorder: false,
+                                    borderDash: [2],
+                                    zeroLineBorderDash: [2]
+                                }
                             }],
                         },
-                        options: {
-                            maintainAspectRatio: false,
-                            layout: {
-                                padding: {
-                                    left: 10,
-                                    right: 25,
-                                    top: 25,
-                                    bottom: 0
-                                }
-                            },
-                            scales: {
-                                xAxes: [{
-                                    time: {
-                                        unit: 'date'
-                                    },
-                                    gridLines: {
-                                        display: false,
-                                        drawBorder: false
-                                    },
-                                    ticks: {
-                                        maxTicksLimit: 7
-                                    }
-                                }],
-                                yAxes: [{
-                                    ticks: {
-                                        maxTicksLimit: 5,
-                                        padding: 10,
-                                        // Include a dollar sign in the ticks
-                                        callback: function(value, index, values) {
-                                            return number_format(value) + " pasien";
-                                        }
-                                    },
-                                    gridLines: {
-                                        color: "rgb(234, 236, 244)",
-                                        zeroLineColor: "rgb(234, 236, 244)",
-                                        drawBorder: false,
-                                        borderDash: [2],
-                                        zeroLineBorderDash: [2]
-                                    }
-                                }],
-                            },
-                            legend: {
-                                display: false
-                            },
-                            tooltips: {
-                                backgroundColor: "rgb(255,255,255)",
-                                bodyFontColor: "#858796",
-                                titleMarginBottom: 10,
-                                titleFontColor: '#6e707e',
-                                titleFontSize: 14,
-                                borderColor: '#dddfeb',
-                                borderWidth: 1,
-                                xPadding: 15,
-                                yPadding: 15,
-                                displayColors: false,
-                                intersect: false,
-                                mode: 'index',
-                                caretPadding: 10,
-                                callbacks: {
-                                    label: function(tooltipItem, chart) {
-                                        var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                                        return datasetLabel + number_format(tooltipItem.yLabel) + " pasien";
-                                    }
+                        legend: {
+                            display: false
+                        },
+                        tooltips: {
+                            backgroundColor: "rgb(255,255,255)",
+                            bodyFontColor: "#858796",
+                            titleMarginBottom: 10,
+                            titleFontColor: '#6e707e',
+                            titleFontSize: 14,
+                            borderColor: '#dddfeb',
+                            borderWidth: 1,
+                            xPadding: 15,
+                            yPadding: 15,
+                            displayColors: false,
+                            intersect: false,
+                            mode: 'index',
+                            caretPadding: 10,
+                            callbacks: {
+                                label: function(tooltipItem, chart) {
+                                    var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                                    return datasetLabel + number_format(tooltipItem.yLabel) + " pasien";
                                 }
                             }
                         }
-                    });
-                </script>
+                    }
+                });
+            </script>
 
 </body>
 
