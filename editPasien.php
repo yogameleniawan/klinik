@@ -209,50 +209,133 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <h1 class="h3 mb-2 text-gray-800">Edit Data Pasien</h1><br>
                     <!-- DataTales Example -->
                     <div class="col-lg-10 col-md-10">
-                            <div class="media d-block mb-4 text-left probootstrap-media">
-                                <div class="col-lg-6">
-                                
-                                        <form class="user" method="POST" action="">
-                                        
-                                            
+                        <div class="media d-block mb-4 text-left probootstrap-media">
+                            <div class="col-lg-6">
+                                <?php
+                                if ($link === false) {
+                                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                                }
+
+                                // Attempt select query execution
+                                $id_user = $_GET['id'];
+                                $sql = "SELECT * FROM pasien WHERE id_pasien = '$id_user'";
+                                if ($result = mysqli_query($link, $sql)) {
+                                    if (mysqli_num_rows($result) > 0) {
+                                        if (isset($_GET['error'])) {
+                                            $error = $_GET['error'];
+                                        } else {
+                                            $error = "";
+                                        }
+
+                                        $pesan = "";
+                                        if ($error == "nama_kosong") {
+                                            $pesan = "Nama harus diisi";
+                                        } else if ($error == "tanggal_kosong") {
+                                            $pesan = "Tanggal Lahir harus diisi";
+                                        } else if ($error == "password_kosong") {
+                                            $pesan = "Password harus diisi";
+                                        } else if ($error == "kelamin_kosong") {
+                                            $pesan = "Jenis Kelamin harus diisi";
+                                        } else if ($error == "alamat_kosong") {
+                                            $pesan = "Alamat harus diisi";
+                                        } else if ($error == "berat_kosong") {
+                                            $pesan = "Berat Badan harus diisi";
+                                        } else if ($error == "tinggi_kosong") {
+                                            $pesan = "Tinggi Badan harus diisi";
+                                        } else if ($error == "suhu_kosong") {
+                                            $pesan = "Suhu Badan harus diisi";
+                                        }
+
+                                        if (isset($_GET['nama']) and isset($_GET['tanggal']) and isset($_GET['alamat']) and isset($_GET['kelamin']) and isset($_GET['berat']) and isset($_GET['tinggi']) and isset($_GET['suhu']) and isset($_GET['password'])) {
+                                            $nama = $_GET['nama'];
+                                            $tanggal = $_GET['tanggal'];
+                                            $kelamin = $_GET['kelamin'];
+                                            $alamat = $_GET['alamat'];
+                                            $berat = $_GET['berat'];
+                                            $tinggi = $_GET['tinggi'];
+                                            $suhu = $_GET['suhu'];
+                                            $password = $_GET['password'];
+                                        } else {
+                                            $nama = "";
+                                            $tanggal = "";
+                                            $kelamin = "";
+                                            $alamat = "";
+                                            $berat = "";
+                                            $tinggi = "";
+                                            $suhu = "";
+                                            $password = "";
+                                        }
+                                ?>
+                                        <form class="user" method="POST" action="prosesEditPasien.php?id=<?php echo $id_user; ?>">
+                                            <label style="color: #FF0000;font-size: 12px;"><?php echo $pesan; ?></label>
+                                            <?php
+                                            while ($row = mysqli_fetch_array($result)) {
+                                            ?>
                                                 <div class="form-group">
                                                     <p>Nama Lengkap :</p>
-                                                    <input type="text" class="form-control form-control-user" name="nama" value="">
+                                                    <input type="text" class="form-control form-control-user" name="nama" value="<?php
+                                                                                                                                    echo  $row['nama_pasien'];
+                                                                                                                                    ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <p>Tanggal Lahir :</p>
-                                                    <input type="date" class="form-control form-control-user" name="tanggal" value="">
+                                                    <input type="date" class="form-control form-control-user" name="tanggal" value="<?php
+                                                                                                                                    echo  $row['tgl_lahir'];
+                                                                                                                                    ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <p>Jenis Kelamin :</p>
-                                                    <input type="text" class="form-control form-control-user" name="kelamin" value="">
+                                                    <input type="text" class="form-control form-control-user" name="kelamin" value="<?php
+                                                                                                                                    echo  $row['jenis_kelamin_pasien'];
+                                                                                                                                    ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <p>Alamat :</p>
-                                                    <input type="text" class="form-control form-control-user" name="alamat" value="">
+                                                    <input type="text" class="form-control form-control-user" name="alamat" value="<?php
+                                                                                                                                    echo  $row['alamat_pasien'];
+                                                                                                                                    ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <p>Berat Badan :</p>
-                                                    <input type="text" class="form-control form-control-user" name="berat" value="">
+                                                    <input type="text" class="form-control form-control-user" name="berat" value="<?php
+                                                                                                                                    echo  $row['berat_badan'];
+                                                                                                                                    ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <p>Tinggi Badan :</p>
-                                                    <input type="text" class="form-control form-control-user" name="tinggi" value="">
+                                                    <input type="text" class="form-control form-control-user" name="tinggi" value="<?php
+                                                                                                                                    echo  $row['tinggi_badan'];
+                                                                                                                                    ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <p>Suhu Badan :</p>
-                                                    <input type="text" class="form-control form-control-user" name="suhu" value="">
+                                                    <input type="text" class="form-control form-control-user" name="suhu" value="<?php
+                                                                                                                                    echo  $row['suhu_badan'];
+                                                                                                                                    ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <p>Password :</p>
                                                     <input type="password" class="form-control form-control-user" name="" placeholder="*******">
-                                                    <input type="hidden" class="form-control form-control-user" name="password" value="">
+                                                    <input type="hidden" class="form-control form-control-user" name="password" value="<?php
+                                                                                                                                        echo  $row['password'];
+                                                                                                                                        ?>">
                                                 </div>
                                                 <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Edit">
                                         </form>
-                                    </div>
-                                </div>
+                            <?php
+                                            }
+                                            // Free result set
+                                            mysqli_free_result($result);
+                                        } else {
+                                            echo "No records matching your query were found.";
+                                        }
+                                    } else {
+                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                    }
+                            ?>
+                            </div>
                         </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 

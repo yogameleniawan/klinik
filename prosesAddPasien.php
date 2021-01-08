@@ -30,7 +30,30 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 </head>
 
 <body id="page-top">
+    <?php
+    $connect = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
+    $nama = $_POST['nama'];
+    $tanggal = $_POST['tanggal'];
+    $kelamin = $_POST['kelamin'];
+    $alamat = $_POST['alamat'];
+    $berat = $_POST['berat'];
+    $tinggi = $_POST['tinggi'];
+    $suhu = $_POST['suhu'];
+    $password = $_POST['password'];
+    $no = "SELECT no_pasien FROM pasien ORDER BY id_pasien DESC LIMIT 1";
+    $result = mysqli_query($connect, $no);
+    $row = mysqli_fetch_array($result);
+
+    $id = $row['no_pasien'] + 1;
+    $id_pasien = "PA" . $id;
+
+    $sql = "INSERT INTO pasien (id_pasien,password,nama_pasien,tgl_lahir,jenis_kelamin_pasien,alamat_pasien,berat_badan,tinggi_badan,suhu_badan)
+  VALUE('$id_pasien','$password','$nama','$tanggal','$kelamin','$alamat','$berat','$tinggi','$suhu')";
+    $res_s = mysqli_query($connect, $sql);
+
+    mysqli_close($connect);
+    ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -210,27 +233,20 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <h1 class="h3 mb-2 text-gray-800">Tables Data</h1>
                     <!-- DataTales Example -->
 
+
+                    <script>
+                        alert('Add pasien berhasil');
+                    </script>
+
                     <?php
                     if (isset($_GET['pesan'])) {
                         $pesan = $_GET['pesan'];
                         if ($pesan == "input") {
-                    ?>
-                            <script>
-                                alert('Data berhasil diinput');
-                            </script>
-                        <?php
+                            echo "Data berhasil di input.";
                         } else if ($pesan == "update") {
-                        ?>
-                            <script>
-                                alert('Data berhasil diupdate');
-                            </script>
-                        <?php
+                            echo "Data berhasil di update.";
                         } else if ($pesan == "hapus") {
-                        ?>
-                            <script>
-                                alert('Data berhasil dihapus');
-                            </script>
-                    <?php
+                            echo "Data berhasil di hapus.";
                         }
                     }
                     ?>
@@ -242,6 +258,17 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                         <?php
                         if ($link === false) {
                             die("ERROR: Could not connect. " . mysqli_connect_error());
+                        }
+
+                        if (isset($_GET['pesan'])) {
+                            $pesan = $_GET['pesan'];
+                            if ($pesan == "input") {
+                                echo "Data telah diinput";
+                            } else if ($pesan == "update") {
+                                echo "Data berhasil di update";
+                            } else if ($pesan == "hapus") {
+                                echo "Data berhasil di hapus";
+                            }
                         }
 
                         // Attempt select query execution
