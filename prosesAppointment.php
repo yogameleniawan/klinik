@@ -275,6 +275,124 @@ VALUE('$no_pelayanan','$tanggal','$keluhan','$id_pasien')";
         </div>
     </section>
 
+    <section class="mb-5" style="padding-top:50px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-5">
+                    <h1 class="display-4">Check Your Appointment</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="probootstrap-features-1" style="padding-bottom: 100px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md probootstrap-feature-item" style="background-image: url(img/rs_anak.jpg);">
+                    <div class="probootstrap-feature-item-text">
+                        <span class="icon"><i class="flaticon-first-aid-kit display-4"></i></span>
+                        <h2>KESEHATAN<span>ANAK</span></h2>
+                    </div>
+                </div>
+                <div class="col-md probootstrap-opening">
+                    <?php
+                    $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
+
+                    if ($link === false) {
+                        die("ERROR: Could not connect. " . mysqli_connect_error());
+                    }
+
+                    // Attempt select query execution
+                    $id_pasien = $_SESSION['id_user'];
+                    $sql = "SELECT p.no_pelayanan as no_pelayanan, p.no_antrian as no_antrian, p.tgl_pelayanan as tgl_pelayanan, p.keluhan as keluhan, p.status_tindakan as status_tindakan, p.total_pembayaran as total_pembayaran, o.nama_obat FROM pelayanan as p JOIN obat as o ON p.id_obat = o.id_obat WHERE p.id_pasien = '$id_pasien'";
+                    if ($result = mysqli_query($link, $sql)) {
+                        if (mysqli_num_rows($result) > 0) {
+
+                    ?>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="color:white">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Antrian</th>
+                                                <th>Tgl Pelayanan</th>
+                                                <th>Keluhan</th>
+                                                <th>Status Tindakan</th>
+                                                <th>Nama Obat</th>
+                                                <th>Total Pembayaran</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <?php
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                    <td><?php
+
+                                                        echo  $row['no_pelayanan'];
+                                                        ?>
+                                                    </td>
+                                                    <td><?php
+                                                        echo $row['no_antrian'];
+
+                                                        ?>
+                                                    </td>
+                                                    <td><?php
+                                                        echo $row['tgl_pelayanan'];
+
+                                                        ?>
+                                                    </td>
+                                                    <td><?php
+                                                        echo $row['keluhan'];
+
+                                                        ?>
+                                                    </td>
+                                                    <td><?php
+                                                        echo $row['status_tindakan'];
+
+                                                        ?>
+                                                    </td>
+                                                    <td><?php
+                                                        echo $row['nama_obat'];
+
+                                                        ?>
+                                                    </td>
+                                                    <td><?php
+                                                        echo $row['total_pembayaran'];
+
+                                                        ?>
+                                                    </td>
+
+                                            </tr>
+                                <?php
+                                                }
+                                                // Free result set
+                                                mysqli_free_result($result);
+                                            } else {
+                                                echo "No records matching your query were found.";
+                                            }
+                                        } else {
+                                            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                        }
+                                ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                </div>
+                <div class="col-md probootstrap-feature-item" style="background-image: url(img/bedah.jpg);">
+                    <div class="probootstrap-feature-item-text">
+                        <span class="icon"><i class="flaticon-gym-control-of-exercises-with-a-list-on-a-clipboard-and-heart-beats display-4"></i></span>
+
+                        <h2>BEDAH <span>SARAF</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <section class="probootstrap-section" id="section-counter">
         <div class="container">
             <div class="row">

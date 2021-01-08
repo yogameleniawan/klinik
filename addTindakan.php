@@ -209,28 +209,24 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <h1 class="h3 mb-2 text-gray-800">Add Transaction</h1><br>
                     <!-- DataTales Example -->
                     <div class="col-lg-10 col-md-10">
-                            <div class="media d-block mb-4 text-left probootstrap-media">
-                                <div class="col-lg-6">
-                                            <form class="user" method="POST" action="">
-                                                    <div class="form-group">
-                                                        <p>ID :</p>
-                                                        <input type="text" class="form-control form-control-user" name="id">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Nama Tindakan :</p>
-                                                        <input type="text" class="form-control form-control-user" name="tindakan">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Biaya :</p>
-                                                        <input type="number" class="form-control form-control-user" name="biaya">
-                                                    </div>
-                                                
-                                                    <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Add">
-                                            </form>
-
+                        <div class="media d-block mb-4 text-left probootstrap-media">
+                            <div class="col-lg-6">
+                                <form class="user" method="POST" action="prosesAddTindakan.php">
+                                    <div class="form-group">
+                                        <p>Nama Tindakan :</p>
+                                        <input type="text" class="form-control form-control-user" name="tindakan">
                                     </div>
-                                </div>
+                                    <div class="form-group">
+                                        <p>Biaya :</p>
+                                        <input type="number" class="form-control form-control-user" name="biaya">
+                                    </div>
+
+                                    <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Add">
+                                </form>
+
+                            </div>
                         </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 

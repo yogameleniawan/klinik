@@ -96,11 +96,11 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Database Tables:</h6>
                         <a class="collapse-item" href="dokter.php">Table Dokter</a>
-                        <a class="collapse-item active" href="pasien.php">Table Pasien</a>
+                        <a class="collapse-item " href="pasien.php">Table Pasien</a>
                         <a class="collapse-item" href="pelayanan.php">Table Pelayanan</a>
                         <a class="collapse-item" href="petugas.php">Table Petugas</a>
                         <a class="collapse-item" href="tindakan.php">Table Tindakan</a>
-                        <a class="collapse-item" href="obat.php">Table Obat</a>
+                        <a class="collapse-item active" href="obat.php">Table Obat</a>
                     </div>
                 </div>
             </li>
@@ -206,35 +206,79 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Add Obat</h1><br>
+                    <h1 class="h3 mb-2 text-gray-800">Edit Obat</h1><br>
                     <!-- DataTales Example -->
                     <div class="col-lg-10 col-md-10">
-                            <div class="media d-block mb-4 text-left probootstrap-media">
-                                <div class="col-lg-6">
-                                            <form class="user" method="POST" action="">
-                                                    <div class="form-group">
-                                                        <p>ID :</p>
-                                                        <input type="text" class="form-control form-control-user" name="id">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Nama Obat :</p>
-                                                        <input type="text" class="form-control form-control-user" name="nama">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Stok :</p>
-                                                        <input type="number" class="form-control form-control-user" name="stok">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Harga :</p>
-                                                        <input type="number" class="form-control form-control-user" name="harga">
-                                                    </div>
+                        <div class="media d-block mb-4 text-left probootstrap-media">
+                            <div class="col-lg-6">
+                                <?php
+                                if ($link === false) {
+                                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                                }
 
-                                                    <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Add">
-                                            </form>
+                                // Attempt select query execution
+                                $id_obat = $_GET['id'];
+                                $sql = "SELECT * FROM obat WHERE id_obat = '$id_obat'";
+                                if ($result = mysqli_query($link, $sql)) {
+                                    if (mysqli_num_rows($result) > 0) {
 
-                                    </div>
-                                </div>
+                                        if (isset($_GET['idobat']) and isset($_GET['nama']) and isset($_GET['stok']) and isset($_GET['harga'])) {
+                                            $idobat = $_GET['idobat'];
+                                            $nama = $_GET['nama'];
+                                            $stok = $_GET['stok'];
+                                            $harga = $_GET['harga'];
+                                        } else {
+                                            $idobat = "";
+                                            $nama = "";
+                                            $stok = "";
+                                            $harga = "";
+                                        }
+                                ?>
+                                        <form class="user" method="POST" action="prosesEditObat.php?id=<?php echo $id_obat; ?>">
+                                            <?php
+                                            while ($row = mysqli_fetch_array($result)) {
+                                            ?>
+                                                <div class="form-group">
+                                                    <p>ID :</p>
+                                                    <input type="text" class="form-control form-control-user" name="idobat" value="<?php
+                                                                                                                                    echo  $row['id_obat'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Nama Obat :</p>
+                                                    <input type="text" class="form-control form-control-user" name="nama" value="<?php
+                                                                                                                                    echo  $row['nama_obat'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Stok :</p>
+                                                    <input type="number" class="form-control form-control-user" name="stok" value="<?php
+                                                                                                                                    echo  $row['stok_obat'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Harga :</p>
+                                                    <input type="number" class="form-control form-control-user" name="harga" value="<?php
+                                                                                                                                    echo  $row['harga_obat_per_pcs'];
+                                                                                                                                    ?>">
+                                                </div>
+
+                                                <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Edit">
+                                        </form>
+                            <?php
+                                            }
+                                            // Free result set
+                                            mysqli_free_result($result);
+                                        } else {
+                                            echo "No records matching your query were found.";
+                                        }
+                                    } else {
+                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                    }
+                            ?>
+                            </div>
                         </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 

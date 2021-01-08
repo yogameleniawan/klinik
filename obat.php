@@ -227,6 +227,11 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                     if (mysqli_num_rows($result) > 0) {
 
                                 ?>
+                                        <div class="col-lg-10 col-md-10" style="padding-top:20px">
+                                            <div class="col-lg-2">
+                                                <a class="btn btn-primary btn-user btn-block" href="addObat.php">Add</a>
+                                            </div>
+                                        </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -236,6 +241,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                                             <th>Nama Obat</th>
                                                             <th>Stok Obat</th>
                                                             <th>Harga Per Pcs</th>
+                                                            <th>Opsi</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -262,6 +268,10 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                                                     echo $row['harga_obat_per_pcs'];
 
                                                                     ?>
+                                                                </td>
+                                                                <td>
+                                                                    <a class="btn btn-primary btn-user btn-block" href="editObat.php?id=<?php echo $row['id_obat']; ?>">Edit</a>
+                                                                    <a class="btn btn-danger btn-user btn-block" href="hapusobat.php?id=<?php echo $row['id_obat']; ?>">Hapus</a>
                                                                 </td>
 
                                                         </tr>

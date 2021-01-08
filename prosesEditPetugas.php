@@ -211,6 +211,21 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <div class="col-lg-10 col-md-10">
                         <div class="media d-block mb-4 text-left probootstrap-media">
                             <div class="col-lg-6">
+
+                                <?php
+
+                                $connect = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
+
+                                $id = $_POST['id'];
+                                $nama = $_POST['nama'];
+                                $password = $_POST['password'];
+
+                                $sql = "UPDATE petugas SET id_petugas = '$id',nama_petugas='$nama',password = '$password' WHERE id_petugas = '$id'";
+                                $res_s = mysqli_query($connect, $sql);
+
+                                mysqli_close($connect);
+                                ?>
+
                                 <?php
                                 if ($link === false) {
                                     die("ERROR: Could not connect. " . mysqli_connect_error());

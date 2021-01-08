@@ -98,9 +98,9 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                         <a class="collapse-item" href="dokter.php">Table Dokter</a>
                         <a class="collapse-item " href="pasien.php">Table Pasien</a>
                         <a class="collapse-item" href="pelayanan.php">Table Pelayanan</a>
-                        <a class="collapse-item active" href="petugas.php">Table Petugas</a>
+                        <a class="collapse-item" href="petugas.php">Table Petugas</a>
                         <a class="collapse-item" href="tindakan.php">Table Tindakan</a>
-                        <a class="collapse-item" href="obat.php">Table Obat</a>
+                        <a class="collapse-item active" href="obat.php">Table Obat</a>
                     </div>
                 </div>
             </li>
@@ -206,54 +206,79 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Edit Petugas</h1><br>
+                    <h1 class="h3 mb-2 text-gray-800">Edit Obat</h1><br>
                     <!-- DataTales Example -->
                     <div class="col-lg-10 col-md-10">
                         <div class="media d-block mb-4 text-left probootstrap-media">
                             <div class="col-lg-6">
+
+                                <?php
+
+                                $connect = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
+
+                                $idobat = $_POST['idobat'];
+                                $nama = $_POST['nama'];
+                                $stok = $_POST['stok'];
+                                $harga = $_POST['harga'];
+
+                                $sql = "UPDATE obat SET id_obat = '$idobat',nama_obat='$nama',stok_obat = '$stok',harga_obat_per_pcs = '$harga' WHERE id_obat = '$idobat'";
+                                $res_s = mysqli_query($connect, $sql);
+
+                                mysqli_close($connect);
+                                ?>
                                 <?php
                                 if ($link === false) {
                                     die("ERROR: Could not connect. " . mysqli_connect_error());
                                 }
 
                                 // Attempt select query execution
-                                $id_user = $_GET['id'];
-                                $sql = "SELECT * FROM petugas WHERE id_petugas = '$id_user'";
+                                $id_obat = $_GET['id'];
+                                $sql = "SELECT * FROM obat WHERE id_obat = '$id_obat'";
                                 if ($result = mysqli_query($link, $sql)) {
                                     if (mysqli_num_rows($result) > 0) {
 
-                                        if (isset($_GET['id']) and isset($_GET['nama']) and isset($_GET['password'])) {
-                                            $id = $_GET['id'];
+                                        if (isset($_GET['idobat']) and isset($_GET['nama']) and isset($_GET['stok']) and isset($_GET['harga'])) {
+                                            $idobat = $_GET['idobat'];
                                             $nama = $_GET['nama'];
-                                            $password = $_GET['password'];
+                                            $stok = $_GET['stok'];
+                                            $harga = $_GET['harga'];
                                         } else {
-                                            $id = "";
+                                            $idobat = "";
                                             $nama = "";
-                                            $password = "";
+                                            $stok = "";
+                                            $harga = "";
                                         }
                                 ?>
-                                        <form class="user" method="POST" action="prosesEditPetugas.php?id=<?php echo $id_user; ?>">
+                                        <form class="user" method="POST" action="prosesEditObat.php?id=<?php echo $id_obat; ?>">
+                                            <script>
+                                                alert('Edit obat berhasil');
+                                            </script>
                                             <?php
                                             while ($row = mysqli_fetch_array($result)) {
                                             ?>
                                                 <div class="form-group">
                                                     <p>ID :</p>
-                                                    <input type="text" class="form-control form-control-user" name="id" value="<?php
-                                                                                                                                echo  $row['id_petugas'];
-                                                                                                                                ?>">
-                                                </div>
-                                                <div class="form-group">
-                                                    <p>Nama :</p>
-                                                    <input type="text" class="form-control form-control-user" name="nama" value="<?php
-                                                                                                                                    echo  $row['nama_petugas'];
+                                                    <input type="text" class="form-control form-control-user" name="idobat" value="<?php
+                                                                                                                                    echo  $row['id_obat'];
                                                                                                                                     ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <p>Password :</p>
-                                                    <input type="password" class="form-control form-control-user" name="" placeholder="*******">
-                                                    <input type="hidden" class="form-control form-control-user" name="password" value="<?php
-                                                                                                                                        echo  $row['password'];
-                                                                                                                                        ?>">
+                                                    <p>Nama Obat :</p>
+                                                    <input type="text" class="form-control form-control-user" name="nama" value="<?php
+                                                                                                                                    echo  $row['nama_obat'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Stok :</p>
+                                                    <input type="number" class="form-control form-control-user" name="stok" value="<?php
+                                                                                                                                    echo  $row['stok_obat'];
+                                                                                                                                    ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Harga :</p>
+                                                    <input type="number" class="form-control form-control-user" name="harga" value="<?php
+                                                                                                                                    echo  $row['harga_obat_per_pcs'];
+                                                                                                                                    ?>">
                                                 </div>
 
                                                 <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Edit">

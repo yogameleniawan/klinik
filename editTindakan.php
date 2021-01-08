@@ -96,10 +96,10 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Database Tables:</h6>
                         <a class="collapse-item" href="dokter.php">Table Dokter</a>
-                        <a class="collapse-item active" href="pasien.php">Table Pasien</a>
+                        <a class="collapse-item " href="pasien.php">Table Pasien</a>
                         <a class="collapse-item" href="pelayanan.php">Table Pelayanan</a>
                         <a class="collapse-item" href="petugas.php">Table Petugas</a>
-                        <a class="collapse-item" href="tindakan.php">Table Tindakan</a>
+                        <a class="collapse-item active" href="tindakan.php">Table Tindakan</a>
                         <a class="collapse-item" href="obat.php">Table Obat</a>
                     </div>
                 </div>
@@ -206,31 +206,78 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Add Transaction</h1><br>
+                    <h1 class="h3 mb-2 text-gray-800">Edit Tindakan</h1><br>
                     <!-- DataTales Example -->
-                    <div class="col-lg-10 col-md-10">
-                            <div class="media d-block mb-4 text-left probootstrap-media">
-                                <div class="col-lg-6">
-                                            <form class="user" method="POST" action="">
-                                                    <div class="form-group">
-                                                        <p>ID :</p>
-                                                        <input type="text" class="form-control form-control-user" name="id">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Nama Tindakan :</p>
-                                                        <input type="text" class="form-control form-control-user" name="tindakan">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Biaya :</p>
-                                                        <input type="number" class="form-control form-control-user" name="biaya">
-                                                    </div>
-                                                
-                                                    <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Add">
-                                            </form>
 
+                    <?php
+                    if ($link === false) {
+                        die("ERROR: Could not connect. " . mysqli_connect_error());
+                    }
+
+                    // Attempt select query execution
+                    $id = $_GET['id'];
+                    $sql = "SELECT * FROM tindakan WHERE id_tindakan = '$id'";
+                    if ($result = mysqli_query($link, $sql)) {
+                        if (mysqli_num_rows($result) > 0) {
+                            if (isset($_GET['error'])) {
+                                $error = $_GET['error'];
+                            } else {
+                                $error = "";
+                            }
+
+                            if (isset($_GET['idtindakan']) and isset($_GET['tindakan']) and isset($_GET['biaya'])) {
+                                $id = $_GET['idtindakan'];
+                                $tindakan = $_GET['tindakan'];
+                                $biaya = $_GET['biaya'];
+                            } else {
+                                $id = "";
+                                $tindakan = "";
+                                $biaya = "";
+                            }
+                    ?>
+
+                            <div class="col-lg-10 col-md-10">
+                                <div class="media d-block mb-4 text-left probootstrap-media">
+                                    <div class="col-lg-6">
+                                        <form class="user" method="POST" action="prosesEditTindakan.php?id=<?php echo $_GET['id']; ?>">
+
+                                            <?php
+                                            while ($row = mysqli_fetch_array($result)) {
+                                            ?>
+                                                <div class="form-group">
+                                                    <p>ID :</p>
+                                                    <input type="text" class="form-control form-control-user" name="idtindakan" value="<?php echo  $row['id_tindakan'];
+                                                                                                                                        ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Nama Tindakan :</p>
+                                                    <input type="text" class="form-control form-control-user" name="tindakan" value="<?php
+                                                                                                                                        echo  $row['nama_tindakan'];
+                                                                                                                                        ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Biaya :</p>
+                                                    <input type="number" class="form-control form-control-user" name="biaya" value="<?php
+                                                                                                                                    echo  $row['biaya'];
+                                                                                                                                    ?>">
+                                                </div>
+
+                                                <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Edit">
+                                        </form>
+                            <?php
+                                            }
+                                            // Free result set
+                                            mysqli_free_result($result);
+                                        } else {
+                                            echo "No records matching your query were found.";
+                                        }
+                                    } else {
+                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                    }
+                            ?>
                                     </div>
                                 </div>
-                        </div>
+                            </div>
                 </div>
                 <!-- /.container-fluid -->
 

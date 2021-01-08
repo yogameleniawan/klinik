@@ -222,8 +222,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                     </div>
                                     <div class="form-group">
                                         <p>Password :</p>
-                                        <input type="password" class="form-control form-control-user" name="" placeholder="*******">
-                                        <input type="hidden" class="form-control form-control-user" name="password">
+                                        <input type="password" class="form-control form-control-user" name="password" placeholder="*******">
                                     </div>
 
                                     <input class="btn btn-primary btn-user btn-block submit" type="submit" value="Add">

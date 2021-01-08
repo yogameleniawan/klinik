@@ -226,6 +226,11 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                     if (mysqli_num_rows($result) > 0) {
 
                                 ?>
+                                        <div class="col-lg-10 col-md-10" style="padding-top:20px">
+                                            <div class="col-lg-2">
+                                                <a class="btn btn-primary btn-user btn-block" href="addPetugas.php">Add</a>
+                                            </div>
+                                        </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -233,6 +238,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                                         <tr>
                                                             <th>ID Petugas</th>
                                                             <th>Nama Petugas</th>
+                                                            <th>Opsi</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -249,6 +255,10 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                                                     echo $row['nama_petugas'];
 
                                                                     ?>
+                                                                </td>
+                                                                <td>
+                                                                    <a class="btn btn-primary btn-user btn-block" href="editpetugas.php?id=<?php echo $row['id_petugas']; ?>">Edit</a>
+                                                                    <a class="btn btn-danger btn-user btn-block" href="hapuspetugas.php?id=<?php echo $row['id_petugas']; ?>">Hapus</a>
                                                                 </td>
 
                                                         </tr>
