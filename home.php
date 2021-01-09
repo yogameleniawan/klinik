@@ -274,92 +274,172 @@
             <h2>KESEHATAN<span>ANAK</span></h2>
           </div>
         </div>
-        <div class="col-md probootstrap-opening">
-          <?php
-          $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
+        <div class="col-md probootstrap-opening" style="color:white">
 
-          if ($link === false) {
-            die("ERROR: Could not connect. " . mysqli_connect_error());
-          }
-
-          // Attempt select query execution
-          $id_pasien = $_SESSION['id_user'];
-          $sql = "SELECT p.no_pelayanan as no_pelayanan, p.no_antrian as no_antrian, p.tgl_pelayanan as tgl_pelayanan, p.keluhan as keluhan, p.status_tindakan as status_tindakan, p.total_pembayaran as total_pembayaran, o.nama_obat FROM pelayanan as p JOIN obat as o ON p.id_obat = o.id_obat WHERE p.id_pasien = '$id_pasien'";
-          if ($result = mysqli_query($link, $sql)) {
-            if (mysqli_num_rows($result) > 0) {
-
-          ?>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="color:white">
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Antrian</th>
-                        <th>Tgl Pelayanan</th>
-                        <th>Keluhan</th>
-                        <th>Status Tindakan</th>
-                        <th>Nama Obat</th>
-                        <th>Total Pembayaran</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <?php
-                        while ($row = mysqli_fetch_array($result)) {
-                        ?>
-                          <td><?php
-
-                              echo  $row['no_pelayanan'];
-                              ?>
-                          </td>
-                          <td><?php
-                              echo $row['no_antrian'];
-
-                              ?>
-                          </td>
-                          <td><?php
-                              echo $row['tgl_pelayanan'];
-
-                              ?>
-                          </td>
-                          <td><?php
-                              echo $row['keluhan'];
-
-                              ?>
-                          </td>
-                          <td><?php
-                              echo $row['status_tindakan'];
-
-                              ?>
-                          </td>
-                          <td><?php
-                              echo $row['nama_obat'];
-
-                              ?>
-                          </td>
-                          <td><?php
-                              echo $row['total_pembayaran'];
-
-                              ?>
-                          </td>
-
-                      </tr>
+          <div class="card-body">
+            <div class="row">
+              <div class="table-responsive">
                 <?php
-                        }
-                        // Free result set
-                        mysqli_free_result($result);
-                      } else {
-                        echo "No records matching your query were found.";
-                      }
-                    } else {
-                      echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                    }
+                $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
+
+                if ($link === false) {
+                  die("ERROR: Could not connect. " . mysqli_connect_error());
+                }
+
+                // Attempt select query execution
+                $id_pasien = $_SESSION['id_user'];
+                $sql = "SELECT p.no_pelayanan as no_pelayanan, p.no_antrian as no_antrian, p.tgl_pelayanan as tgl_pelayanan, p.keluhan as keluhan, p.status_tindakan as status_tindakan, p.total_pembayaran as total_pembayaran, o.nama_obat FROM pelayanan as p JOIN obat as o ON p.id_obat = o.id_obat WHERE p.id_pasien = '$id_pasien'";
+                if ($result = mysqli_query($link, $sql)) {
+                  if (mysqli_num_rows($result) > 0) {
+
                 ?>
-                    </tbody>
-                  </table>
-                </div>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="color:white">
+                      <thead>
+                        <tr>
+                          <p>Complete Appointment</p>
+                          <th>No</th>
+                          <th>Antrian</th>
+                          <th>Tgl Pelayanan</th>
+                          <th>Keluhan</th>
+                          <th>Status Tindakan</th>
+                          <th>Nama Obat</th>
+                          <th>Total Pembayaran</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <?php
+                          while ($row = mysqli_fetch_array($result)) {
+                          ?>
+                            <td><?php
+
+                                echo  $row['no_pelayanan'];
+                                ?>
+                            </td>
+                            <td><?php
+                                echo $row['no_antrian'];
+
+                                ?>
+                            </td>
+                            <td><?php
+                                echo $row['tgl_pelayanan'];
+
+                                ?>
+                            </td>
+                            <td><?php
+                                echo $row['keluhan'];
+
+                                ?>
+                            </td>
+                            <td><?php
+                                echo $row['status_tindakan'];
+
+                                ?>
+                            </td>
+                            <td><?php
+                                echo $row['nama_obat'];
+
+                                ?>
+                            </td>
+                            <td><?php
+                                echo $row['total_pembayaran'];
+
+                                ?>
+                            </td>
+
+                        </tr>
+                  <?php
+                          }
+                          // Free result set
+                          mysqli_free_result($result);
+                        } else {
+                          echo "Appointment Complete Not Available.";
+                        }
+                      }
+                  ?>
+                    </table>
               </div>
+            </div>
+
+            <div class="row">
+              <div class="table-responsive">
+                <?php $id_pasien = $_SESSION['id_user'];
+                $sql = "SELECT * FROM pelayanan WHERE id_pasien = '$id_pasien' AND status_tindakan IS NULL";
+                if ($result = mysqli_query($link, $sql)) {
+                  if (mysqli_num_rows($result) > 0) { ?>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="color:white">
+                      <thead>
+                        <tr>
+                          <p>Pending Appointment</p>
+                          <th>No</th>
+                          <th>Antrian</th>
+                          <th>Tgl Pelayanan</th>
+                          <th>Keluhan</th>
+                          <th>Status Tindakan</th>
+                          <th>Id Obat</th>
+                          <th>Total Pembayaran</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <?php
+                          while ($row = mysqli_fetch_array($result)) {
+                          ?>
+                            <td><?php
+
+                                echo  $row['no_pelayanan'];
+                                ?>
+                            </td>
+                            <td><?php
+                                echo $row['no_antrian'];
+
+                                ?>
+                            </td>
+                            <td><?php
+                                echo $row['tgl_pelayanan'];
+
+                                ?>
+                            </td>
+                            <td><?php
+                                echo $row['keluhan'];
+
+                                ?>
+                            </td>
+                            <td><?php
+                                echo $row['status_tindakan'];
+
+                                ?>
+                            </td>
+                            <td><?php
+                                echo $row['id_obat'];
+
+                                ?>
+                            </td>
+                            <td><?php
+                                echo $row['total_pembayaran'];
+
+                                ?>
+                            </td>
+
+                        </tr>
+                  <?php
+                          }
+                          // Free result set
+                          mysqli_free_result($result);
+                        } else {
+                          echo "Appointment Pending Not Available.";
+                        }
+                      } else {
+                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                      }
+                  ?>
+                      </tbody>
+                    </table>
+              </div>
+            </div>
+          </div>
+
+
         </div>
         <div class="col-md probootstrap-feature-item" style="background-image: url(img/infus.jpg);">
           <div class="probootstrap-feature-item-text">

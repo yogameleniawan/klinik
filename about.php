@@ -90,7 +90,7 @@
       </div>
     </div>
   </section>
-  
+
   <section class="probootstrap-section" id="section-counter">
     <div class="container">
       <div class="row">
@@ -150,7 +150,9 @@
 
             <div class="col-lg-4 col-md-6">
               <div class="media d-block mb-4 text-left probootstrap-media">
-                <div class="probootstrap-icon mb-3"><h1>1</h1></div>
+                <div class="probootstrap-icon mb-3">
+                  <h1>1</h1>
+                </div>
                 <div class="media-body">
                   <h3 class="h5 mt-0 text-secondary">History</h3>
                   <p>Rumah Sakit Siloam atau dikenal juga dengan Siloam Hospitals merupakan salah satu jaringan rumah sakit swasta yang didirikan oleh Lippo Group. Awalnya Rumah Sakit ini bernama Rumah Sakit Siloam Gleneagles yang yang merupakan kerjasama antara Lippo Group dan Rumah Sakit Gleneagles, didirikan pada 3 Agustus 1996 melalui PT Sentralindo Wirasta yang bergerak di bidang layanan kesehatan. Rumah Sakit Siloam Gleneagles pertama kali dibangun di kawasan Lippo Village (dahulu: Lippo Karawaci), Tangerang dan Lippo Cikarang.</p>
@@ -159,7 +161,9 @@
             </div>
             <div class="col-lg-4 col-md-6">
               <div class="media d-block mb-4 text-left probootstrap-media">
-                <div class="probootstrap-icon mb-3"><h1>2</h1></div>
+                <div class="probootstrap-icon mb-3">
+                  <h1>2</h1>
+                </div>
                 <div class="media-body">
                   <h3 class="h5 mt-0 text-secondary">Achievement</h3>
                   <p>Pada tahun 2010, Siloam Hospitals membangun rumah sakit pendidikan dengan berkolaborasi dengan Fakultas Kedokteran dan School of Nursing (SoN) Universitas Pelita Harapan (UPH), dan Mochtar Riady Institute of Nanotechnology (MRIN)[1]. Mulai tahun 2011 Siloam Hospitals menjadi jaringan Rumah sakit dengan membangun enam rumah sakit dan mengakuisisi lima rumah sakit.</p>
@@ -168,7 +172,9 @@
             </div>
             <div class="col-lg-4 col-md-6">
               <div class="media d-block mb-4 text-left probootstrap-media">
-                <div class="probootstrap-icon mb-3"><h1>3</h1></div>
+                <div class="probootstrap-icon mb-3">
+                  <h1>3</h1>
+                </div>
                 <div class="media-body">
                   <h3 class="h5 mt-0 text-secondary">Now</h3>
                   <p>Saat ini Rumah Sakit Siloam telah memiliki beberapa rumah sakit, klinik spesialis, dan pusat pengobatan kanker. Melalui PT Siloam International Hospitals telah tercatat di Bursa Efek Indonesia pada tanggal 12 September 2013. Untuk meningkatkan layanan bertaraf Internasional, rumah sakit ini menjadi rumah sakit pertama di Indonesia yang mendapat akreditasi international dari lembaga akreditasi Joint Commission International Accreditation (akreditasi telah dilakukan pada tahun 2007, 2010 dan 2013).</p>
@@ -297,9 +303,9 @@
       </div>
     </div>
   </section>
-  
-  
-  
+
+
+
 
   <footer class="probootstrap-footer">
     <div class="container">
