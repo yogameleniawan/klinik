@@ -111,7 +111,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
             <div class="col-lg-10 col-md-10">
               <div class="media d-block mb-4 text-left probootstrap-media">
-              <h2>Cek Your Profile Info</h2>
+                <h2>Cek Your Profile Info</h2>
                 <div class="col-lg-6">
                   <?php
                   if ($link === false) {
@@ -177,6 +177,12 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                         <?php
                         while ($row = mysqli_fetch_array($result)) {
                         ?>
+                          <div class="form-group">
+                            <p>No Pasien :</p>
+                            <input type="text" class="form-control form-control-user" name="idpasien" value="<?php
+                                                                                                              echo  $row['id_pasien'];
+                                                                                                              ?>">
+                          </div>
                           <div class="form-group">
                             <p>Nama Lengkap :</p>
                             <input type="text" class="form-control form-control-user" name="nama" value="<?php

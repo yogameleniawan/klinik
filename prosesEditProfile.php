@@ -124,13 +124,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                     $tinggi = $_POST['tinggi'];
                                     $suhu = $_POST['suhu'];
                                     $password = $_POST['password'];
-                                    $no = "SELECT no_pasien FROM pasien ORDER BY id_pasien DESC LIMIT 1";
-                                    $result = mysqli_query($connect, $no);
-                                    $row = mysqli_fetch_array($result);
-
-                                    $id = $row['no_pasien'] + 1;
                                     $id_pasien = $_SESSION['id_user'];
-
                                     $sql = "UPDATE pasien SET nama_pasien = '$nama',password='$password',tgl_lahir = '$tanggal',jenis_kelamin_pasien = '$kelamin',alamat_pasien = '$alamat',berat_badan = '$berat',tinggi_badan = '$tinggi',suhu_badan = '$suhu' WHERE id_pasien = '$id_pasien'";
                                     $res_s = mysqli_query($connect, $sql);
 
@@ -156,6 +150,12 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                                 <?php
                                                 while ($row = mysqli_fetch_array($result)) {
                                                 ?>
+                                                    <div class="form-group">
+                                                        <p>No Pasien :</p>
+                                                        <input type="text" class="form-control form-control-user" name="idpasien" value="<?php
+                                                                                                                                            echo  $row['id_pasien'];
+                                                                                                                                            ?>">
+                                                    </div>
                                                     <div class="form-group">
                                                         <p>Nama Lengkap :</p>
                                                         <input type="text" class="form-control form-control-user" name="nama" value="<?php
