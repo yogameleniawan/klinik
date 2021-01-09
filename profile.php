@@ -110,6 +110,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
             <div class="col-lg-10 col-md-10">
               <div class="media d-block mb-4 text-left probootstrap-media">
+              <h2>Cek Your Profile Info</h2>
                 <div class="col-lg-6">
                   <?php
                   if ($link === false) {
@@ -322,7 +323,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
   <section class="probootstrap-features-1" style="padding-bottom: 100px;">
     <div class="container">
       <div class="row">
-        <div class="col-md probootstrap-feature-item" style="background-image: url(img/rs_anak.jpg);">
+        <div class="col-md probootstrap-feature-item" style="background-image: url(img/ruang.jpg);">
           <div class="probootstrap-feature-item-text">
             <span class="icon"><i class="flaticon-first-aid-kit display-4"></i></span>
             <h2>KESEHATAN<span>ANAK</span></h2>
@@ -415,7 +416,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                 </div>
               </div>
         </div>
-        <div class="col-md probootstrap-feature-item" style="background-image: url(img/bedah.jpg);">
+        <div class="col-md probootstrap-feature-item" style="background-image: url(img/infus.jpg);">
           <div class="probootstrap-feature-item-text">
             <span class="icon"><i class="flaticon-gym-control-of-exercises-with-a-list-on-a-clipboard-and-heart-beats display-4"></i></span>
 
