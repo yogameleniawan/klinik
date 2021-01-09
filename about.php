@@ -40,10 +40,10 @@
 
       <div class="collapse navbar-collapse" id="probootstrap-nav">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active"><a href="index.html" class="nav-link pl-0">Home</a></li>
+          <li class="nav-item"><a href="index.html" class="nav-link pl-0">Home</a></li>
           <?php if (!empty($_SESSION['id_user'])) { ?>
             <li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
-            <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
+            <li class="nav-item active"><a href="about.php" class="nav-link">About</a></li>
             <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </li>
           <?php } else { ?>
@@ -81,297 +81,16 @@
     </div>
   </header>
 
-  <section class="mb-5">
+  <section>
     <div class="container">
       <div class="row">
         <div class="col-md-6 mb-5">
-          <h1 class="display-4">The Future Of Medical Website</h1>
+          <h1 class="display-4">About Siloam Hospitals</h1>
         </div>
       </div>
     </div>
   </section>
-
-  <section class="probootstrap-features-1" style="padding-bottom: 100px;">
-    <div class="container">
-      <div class="row">
-        <div class="col-md probootstrap-feature-item" style="background-image: url(img/rs_anak.jpg);">
-          <div class="probootstrap-feature-item-text">
-            <span class="icon"><i class="flaticon-first-aid-kit display-4"></i></span>
-            <h2>KESEHATAN<span>ANAK</span></h2>
-          </div>
-        </div>
-        <div class="col-md probootstrap-opening">
-          <h2 class="text-uppercase mb-3">Opening Hour <span>Medical Center</span></h2>
-          <ul class="list-unstyled probootstrap-schedule">
-            <li>Mon-Fri <span>5:00-17:00</span></li>
-            <li>Sat <span>6:30-17:00</span></li>
-            <li>Sun <span>6:30-17:00</span></li>
-          </ul>
-        </div>
-        <div class="col-md probootstrap-feature-item" style="background-image: url(img/bedah.jpg);">
-          <div class="probootstrap-feature-item-text">
-            <span class="icon"><i class="flaticon-gym-control-of-exercises-with-a-list-on-a-clipboard-and-heart-beats display-4"></i></span>
-
-            <h2>BEDAH <span>SARAF</span></h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="probootstrap-services" style="padding-bottom: 100px;">
-    <div class="container">
-      <div class="row no-gutters">
-        <div class="col-md-3 probootstrap-aside-stretch-left">
-          <div class="mb-3">
-            <h2 class="h6">Departments</h2>
-            <ul class="list-unstyled probootstrap-light mb-4">
-              <li><a href="#">Gigi</a></li>
-              <li><a href="#">Kesehatan Anak</a></li>
-              <li><a href="#">Kulit</a></li>
-              <li><a href="#">Umum</a></li>
-              <li><a href="#">Bedah</a></li>
-              <li><a href="#">Penyakit Dalam</a></li>
-              <li><a href="#">Kesehatan Mata</a></li>
-              <li><a href="#">Jantung</a></li>
-              <li><a href="#">Orthopaedi</a></li>
-              <li><a href="#">Bedah Saraf</a></li>
-              <li><a href="#">Gizi</a></li>
-              <li><a href="#">THT</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-9 pl-md-5 pl-0">
-          <div class="row mb-5">
-
-            <div class="col-lg-4 col-md-6">
-              <div class="media d-block mb-4 text-left probootstrap-media">
-                <div class="probootstrap-icon mb-3"><span class="flaticon-price-tag display-4"></span></div>
-                <div class="media-body">
-                  <h3 class="h5 mt-0 text-secondary">Medical Pricing</h3>
-                  <p>Harga yang pas dikantong kamu, dan dapatkan jaminan BPJS disini.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="media d-block mb-4 text-left probootstrap-media">
-                <div class="probootstrap-icon mb-3"><span class="flaticon-shield-with-cross display-4"></span></div>
-                <div class="media-body">
-                  <h3 class="h5 mt-0 text-secondary">Quality &amp; Safety</h3>
-                  <p>Tak usah diragukan lagi kualitas dan keamnan kita terbaik dari segi apapun.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="media d-block mb-4 text-left probootstrap-media">
-                <div class="probootstrap-icon mb-3"><span class="flaticon-first-aid-kit display-4"></span></div>
-                <div class="media-body">
-                  <h3 class="h5 mt-0 text-secondary">Immidiate Service</h3>
-                  <p>Tak perlu menunggu lama untuk mendapat layanan, kamu bisa mendaftar online.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-              <div class="media d-block mb-4 text-left probootstrap-media">
-                <div class="probootstrap-icon mb-3"><span class="flaticon-microscope display-4"></span></div>
-                <div class="media-body">
-                  <h3 class="h5 mt-0 text-secondary">Cutting-Edge Equipment</h3>
-                  <p>Dengan berbagai alat medis yang sangat mutakhir kami persembahkan untuk anda.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="media d-block mb-4 text-left probootstrap-media">
-                <div class="probootstrap-icon mb-3"><span class="flaticon-gym-control-of-exercises-with-a-list-on-a-clipboard-and-heart-beats display-4"></span></div>
-                <div class="media-body">
-                  <h3 class="h5 mt-0 text-secondary">Personalized Treatment</h3>
-                  <p>Peralatan sekali pakai khusus untuk anda.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="media d-block mb-4 text-left probootstrap-media">
-                <div class="probootstrap-icon mb-3"><span class="flaticon-doctor display-4"></span></div>
-                <div class="media-body">
-                  <h3 class="h5 mt-0 text-secondary">Experience Physicians</h3>
-                  <p>Dokter yang berpegalaman di bidangnya akan senantiasa membantu anda.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <section class="probootstrap-blog-appointment">
-    <div class="container">
-      <div class="row no-gutters">
-        <div class="col-md-6 pr-md-5 pr-0 pt-md-5 pt-0 pb-md-5 pb-0">
-          <h2 class="h1 mb-4 text-white">Recent Blog</h2>
-          <ul class="probootstrap-blog-list list-unstyled">
-            <li>
-              <h2><span class="date">Januari 02, 2021</span><a href="#">The practice of medicine is a lot like parenting </a></h2>
-            </li>
-            <li>
-              <h2><span class="date">Januari 03, 2021</span><a href="#">Physicians: Want to overcome burnout? Start studying business. </a></h2>
-            </li>
-            <li>
-              <h2><span class="date">Januari 04, 2021</span><a href="#">Want a simple and easy-to-use EMR? Well, you can have it for free. </a></h2>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6 p-md-5 p-3 probootstrap-aside-stretch-right">
-          <h2 class="h1 text-white">Make an Appointment</h2>
-          <form method="POST" action="prosesAppointment.php" class="probootstrap-form-appointment">
-            <div class="form-group">
-              <p style="color:white">Nama : </p>
-              <input type="text" name="nama" class="form-control" placeholder="Your Name">
-              <p style="color:white;padding-top:15px">Tanggal Keluhan : </p>
-            </div>
-            <div class="form-group">
-
-              <input type="date" name="tanggal" class="form-control form-control-user" placeholder="Appointment Date">
-            </div>
-            <div class="form-group">
-              <p style="color:white">Keluhan Anda : </p>
-              <textarea name="keluhan" class="form-control" id="" cols="30" rows="10" placeholder="Write your message"></textarea>
-            </div>
-            <div class="form-group">
-              <?php if (!empty($_SESSION['id_user'])) { ?>
-                <input type="submit" value="Submit Form" class="btn btn-secondary">
-                </li>
-              <?php } else { ?>
-                <a href="login.php" value="Submit Form" class="btn btn-secondary">Submit Form</a>
-              <?php } ?>
-
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="mb-5" style="padding-top:50px">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mb-5">
-          <h1 class="display-4">Check Your Appointment</h1>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="probootstrap-features-1" style="padding-bottom: 100px;">
-    <div class="container">
-      <div class="row">
-        <div class="col-md probootstrap-feature-item" style="background-image: url(img/ruang.jpg);">
-          <div class="probootstrap-feature-item-text">
-            <span class="icon"><i class="flaticon-first-aid-kit display-4"></i></span>
-            <h2>KESEHATAN<span>ANAK</span></h2>
-          </div>
-        </div>
-        <div class="col-md probootstrap-opening">
-          <?php
-          $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
-
-          if ($link === false) {
-            die("ERROR: Could not connect. " . mysqli_connect_error());
-          }
-
-          // Attempt select query execution
-          $id_pasien = $_SESSION['id_user'];
-          $sql = "SELECT p.no_pelayanan as no_pelayanan, p.no_antrian as no_antrian, p.tgl_pelayanan as tgl_pelayanan, p.keluhan as keluhan, p.status_tindakan as status_tindakan, p.total_pembayaran as total_pembayaran, o.nama_obat FROM pelayanan as p JOIN obat as o ON p.id_obat = o.id_obat WHERE p.id_pasien = '$id_pasien'";
-          if ($result = mysqli_query($link, $sql)) {
-            if (mysqli_num_rows($result) > 0) {
-
-          ?>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="color:white">
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Antrian</th>
-                        <th>Tgl Pelayanan</th>
-                        <th>Keluhan</th>
-                        <th>Status Tindakan</th>
-                        <th>Nama Obat</th>
-                        <th>Total Pembayaran</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <?php
-                        while ($row = mysqli_fetch_array($result)) {
-                        ?>
-                          <td><?php
-
-                              echo  $row['no_pelayanan'];
-                              ?>
-                          </td>
-                          <td><?php
-                              echo $row['no_antrian'];
-
-                              ?>
-                          </td>
-                          <td><?php
-                              echo $row['tgl_pelayanan'];
-
-                              ?>
-                          </td>
-                          <td><?php
-                              echo $row['keluhan'];
-
-                              ?>
-                          </td>
-                          <td><?php
-                              echo $row['status_tindakan'];
-
-                              ?>
-                          </td>
-                          <td><?php
-                              echo $row['nama_obat'];
-
-                              ?>
-                          </td>
-                          <td><?php
-                              echo $row['total_pembayaran'];
-
-                              ?>
-                          </td>
-
-                      </tr>
-                <?php
-                        }
-                        // Free result set
-                        mysqli_free_result($result);
-                      } else {
-                        echo "No records matching your query were found.";
-                      }
-                    } else {
-                      echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                    }
-                ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-        </div>
-        <div class="col-md probootstrap-feature-item" style="background-image: url(img/infus.jpg);">
-          <div class="probootstrap-feature-item-text">
-            <span class="icon"><i class="flaticon-gym-control-of-exercises-with-a-list-on-a-clipboard-and-heart-beats display-4"></i></span>
-
-            <h2>BEDAH <span>SARAF</span></h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  
   <section class="probootstrap-section" id="section-counter">
     <div class="container">
       <div class="row">
@@ -403,6 +122,93 @@
     </div>
 
   </section>
+
+  <section class="probootstrap-services" style="padding-bottom: 100px;">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-md-3 probootstrap-aside-stretch-left">
+          <div class="mb-3">
+            <h2 class="h6">Departments</h2>
+            <ul class="list-unstyled probootstrap-light mb-4">
+              <li><a href="#">Gigi</a></li>
+              <li><a href="#">Kesehatan Anak</a></li>
+              <li><a href="#">Kulit</a></li>
+              <li><a href="#">Umum</a></li>
+              <li><a href="#">Bedah</a></li>
+              <li><a href="#">Penyakit Dalam</a></li>
+              <li><a href="#">Kesehatan Mata</a></li>
+              <li><a href="#">Jantung</a></li>
+              <li><a href="#">Orthopaedi</a></li>
+              <li><a href="#">Bedah Saraf</a></li>
+              <li><a href="#">Gizi</a></li>
+              <li><a href="#">THT</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9 pl-md-5 pl-0">
+          <div class="row mb-5">
+
+            <div class="col-lg-4 col-md-6">
+              <div class="media d-block mb-4 text-left probootstrap-media">
+                <div class="probootstrap-icon mb-3"><h1>1</h1></div>
+                <div class="media-body">
+                  <h3 class="h5 mt-0 text-secondary">History</h3>
+                  <p>Rumah Sakit Siloam atau dikenal juga dengan Siloam Hospitals merupakan salah satu jaringan rumah sakit swasta yang didirikan oleh Lippo Group. Awalnya Rumah Sakit ini bernama Rumah Sakit Siloam Gleneagles yang yang merupakan kerjasama antara Lippo Group dan Rumah Sakit Gleneagles, didirikan pada 3 Agustus 1996 melalui PT Sentralindo Wirasta yang bergerak di bidang layanan kesehatan. Rumah Sakit Siloam Gleneagles pertama kali dibangun di kawasan Lippo Village (dahulu: Lippo Karawaci), Tangerang dan Lippo Cikarang.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="media d-block mb-4 text-left probootstrap-media">
+                <div class="probootstrap-icon mb-3"><h1>2</h1></div>
+                <div class="media-body">
+                  <h3 class="h5 mt-0 text-secondary">Achievement</h3>
+                  <p>Pada tahun 2010, Siloam Hospitals membangun rumah sakit pendidikan dengan berkolaborasi dengan Fakultas Kedokteran dan School of Nursing (SoN) Universitas Pelita Harapan (UPH), dan Mochtar Riady Institute of Nanotechnology (MRIN)[1]. Mulai tahun 2011 Siloam Hospitals menjadi jaringan Rumah sakit dengan membangun enam rumah sakit dan mengakuisisi lima rumah sakit.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="media d-block mb-4 text-left probootstrap-media">
+                <div class="probootstrap-icon mb-3"><h1>3</h1></div>
+                <div class="media-body">
+                  <h3 class="h5 mt-0 text-secondary">Now</h3>
+                  <p>Saat ini Rumah Sakit Siloam telah memiliki beberapa rumah sakit, klinik spesialis, dan pusat pengobatan kanker. Melalui PT Siloam International Hospitals telah tercatat di Bursa Efek Indonesia pada tanggal 12 September 2013. Untuk meningkatkan layanan bertaraf Internasional, rumah sakit ini menjadi rumah sakit pertama di Indonesia yang mendapat akreditasi international dari lembaga akreditasi Joint Commission International Accreditation (akreditasi telah dilakukan pada tahun 2007, 2010 dan 2013).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="probootstrap-features-1" style="padding-bottom: 100px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md probootstrap-feature-item" style="background-image: url(img/infus.jpg);">
+          <div class="probootstrap-feature-item-text">
+            <span class="icon"><i class="flaticon-first-aid-kit display-4"></i></span>
+            <h2>KESEHATAN<span>ANAK</span></h2>
+          </div>
+        </div>
+        <div class="col-md probootstrap-opening">
+          <h2 class="text-uppercase mb-3">Opening Hour <span>Medical Center</span></h2>
+          <ul class="list-unstyled probootstrap-schedule">
+            <li>Mon-Fri <span>5:00-17:00</span></li>
+            <li>Sat <span>6:30-17:00</span></li>
+            <li>Sun <span>6:30-17:00</span></li>
+          </ul>
+        </div>
+        <div class="col-md probootstrap-feature-item" style="background-image: url(img/ruang.jpg);">
+          <div class="probootstrap-feature-item-text">
+            <span class="icon"><i class="flaticon-gym-control-of-exercises-with-a-list-on-a-clipboard-and-heart-beats display-4"></i></span>
+
+            <h2>BEDAH <span>SARAF</span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="probootstrap-section bg-light">
     <div class="container">
       <div class="row mb-5">
@@ -491,6 +297,9 @@
       </div>
     </div>
   </section>
+  
+  
+  
 
   <footer class="probootstrap-footer">
     <div class="container">

@@ -50,6 +50,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
         <ul class="navbar-nav mr-auto">
           <li class="nav-item"><a href="home.php" class="nav-link pl-0">Home</a></li>
           <li class="nav-item active"><a href="profile.php" class="nav-link">Profile</a></li>
+          <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
           <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#logoutModal">Logout</a>
           </li>
         </ul>
