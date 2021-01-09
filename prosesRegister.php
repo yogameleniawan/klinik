@@ -33,11 +33,11 @@
   $tinggi = $_POST['tinggi'];
   $suhu = $_POST['suhu'];
   $password = $_POST['password'];
-  $no = "SELECT no_pasien FROM pasien ORDER BY id_pasien DESC LIMIT 1";
+  $no = "SELECT COUNT(id_pasien) as hitung FROM pasien";
   $result = mysqli_query($connect, $no);
   $row = mysqli_fetch_array($result);
 
-  $id = $row['no_pasien'] + 1;
+  $id = $row['hitung'] + 1;
   $id_pasien = "PA" . $id;
 
   $sql = "INSERT INTO pasien (id_pasien,password,nama_pasien,tgl_lahir,jenis_kelamin_pasien,alamat_pasien,berat_badan,tinggi_badan,suhu_badan)
