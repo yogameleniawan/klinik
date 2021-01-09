@@ -84,7 +84,7 @@
                   ?>
 
                   <?php
-                  echo "Registrasi akun berhasil";
+                  echo "Registrasi akun berhasil. Gunakan ID " . $id_pasien . " untuk Login";
                   ?>
 
                 </label>
