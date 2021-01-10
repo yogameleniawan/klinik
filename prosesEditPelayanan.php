@@ -209,6 +209,7 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
                                 $connect = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
 
+
                                 $tanggal = $_POST['tanggal'];
                                 $keluhan = $_POST['keluhan'];
                                 $statustindakan = $_POST['statustindakan'];
@@ -219,13 +220,9 @@ $link = mysqli_connect("localhost", "root", "", "klinik_kesehatan");
                                 $dokter = $_POST['dokter'];
                                 $tindakan = $_POST['tindakan'];
                                 $obat = $_POST['obat'];
-                                $no = "SELECT no_antrian FROM pelayanan ORDER BY no_antrian DESC LIMIT 1";
-                                $result = mysqli_query($connect, $no);
-                                $row = mysqli_fetch_array($result);
 
-                                $id = $row['no_antrian'] + 1;
                                 $no_pelayanan = $_GET['id'];
-                                $no_antrian = $row['no_antrian'];
+                                $no_antrian = $_POST['antrian'];
 
                                 $sql = "UPDATE pelayanan SET no_pelayanan = '$no_pelayanan',no_antrian = '$no_antrian',tgl_pelayanan = '$tanggal',keluhan='$keluhan',status_tindakan='$statustindakan',total_pembayaran='$bayar',status_pembayaran='$statusbayar',id_petugas='$petugas',id_pasien='$pasien',id_dokter='$dokter',id_tindakan='$tindakan',id_obat='$obat' WHERE no_pelayanan = '$no_pelayanan'";
                                 $res_s = mysqli_query($connect, $sql);
